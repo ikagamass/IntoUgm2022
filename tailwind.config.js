@@ -14,7 +14,8 @@ module.exports = {
         primary: {
           DEFAULT: '#3b3b3b',
           red: '#FC3C5B'
-        }
+        },
+        mygreen:"11645B"
       },
       fontFamily: {
         main: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',

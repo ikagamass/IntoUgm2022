@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Home from "./pages/Home";
 import Live from "./pages/Live";
 import TourDeFaculty from "./pages/TourDeFaculty";
-import TryOut from "./pages/TryOut";
+import TryOut from "./pages/TryOut.jsx";
 
 function App() {
   return (
