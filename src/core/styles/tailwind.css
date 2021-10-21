@@ -4,63 +4,63 @@
 
 @layer utilities {
   .flex-cc {
-    @apply flex justify-center items-center;
+    @apply flex items-center justify-center;
   }
   .flex-cs {
-    @apply flex justify-center items-start;
+    @apply flex items-start justify-center;
   }
   .flex-ce {
-    @apply flex justify-center items-end;
+    @apply flex items-end justify-center;
   }
 
   .flex-bc {
-    @apply flex justify-between items-center;
+    @apply flex items-center justify-between;
   }
   .flex-bs {
-    @apply flex justify-between items-start;
+    @apply flex items-start justify-between;
   }
   .flex-be {
-    @apply flex justify-between items-end;
+    @apply flex items-end justify-between;
   }
 
   .flex-sc {
-    @apply flex justify-start items-center;
+    @apply flex items-center justify-start;
   }
   .flex-ss {
-    @apply flex justify-start items-start;
+    @apply flex items-start justify-start;
   }
   .flex-se {
-    @apply flex justify-start items-end;
+    @apply flex items-end justify-start;
   }
 
   .flex-ec {
-    @apply flex justify-end items-center;
+    @apply flex items-center justify-end;
   }
   .flex-es {
-    @apply flex justify-end items-start;
+    @apply flex items-start justify-end;
   }
   .flex-ee {
-    @apply flex justify-end items-end;
+    @apply flex items-end justify-end;
   }
 
   .flex-vc {
-    @apply flex justify-evenly items-center;
+    @apply flex items-center justify-evenly;
   }
   .flex-vs {
-    @apply flex justify-evenly items-start;
+    @apply flex items-start justify-evenly;
   }
   .flex-ve {
-    @apply flex justify-evenly items-end;
+    @apply flex items-end justify-evenly;
   }
 
   .flex-ac {
-    @apply flex justify-around items-center;
+    @apply flex items-center justify-around;
   }
   .flex-as {
-    @apply flex justify-around items-start;
+    @apply flex items-start justify-around;
   }
   .flex-ae {
-    @apply flex justify-around items-end;
+    @apply flex items-end justify-around;
   }
 
   .col {
@@ -71,20 +71,64 @@
     @apply w-full h-full;
   }
   .fullscreen {
-    @apply fixed full inset-0;
+    @apply fixed inset-0 full;
   }
   .stroked {
     -webkit-text-stroke: 0.4px;
   }
 }
 
+@font-face {
+  font-family: "albert";
+  src: url("../../fonts/AlbertSans-Light.woff2") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "albert";
+  src: url("../../fonts/AlbertSans-Regular.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "albert";
+  src: url("../../fonts/AlbertSans-Medium.woff2") format("woff");
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "albert";
+  src: url("../../fonts/AlbertSans-SemiBold.woff2") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "albert";
+  src: url("../../fonts/AlbertSans-Bold.woff2") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "acakadut";
+  src: url("../../fonts/aAcakadut.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
+
+  font-family: "albert";
 }
 
 code {

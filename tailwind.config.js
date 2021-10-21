@@ -15,10 +15,12 @@ module.exports = {
           DEFAULT: '#3b3b3b',
           red: '#FC3C5B'
         },
-        mygreen:"11645B"
+        mygreen:"#11645B",
+        myDarkBlue: "#00295D"
       },
       fontFamily: {
         main: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
+        "acakadut" : "acakadut"
       },
       screens: {
         '-2xl': { raw: '(max-width: 1535px)' },
