@@ -7,6 +7,23 @@
   color: #11645b;
 }
 
+.myInput {
+  color: #363a39 !important;
+}
+
 .acakaut {
   font-family: "acakadut";
+}
+
+/* text password harus berupa huruf kecil */
+.textNormal {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .textNormal {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
 }
