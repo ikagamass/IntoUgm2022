@@ -4,7 +4,7 @@ import React from "react";
 
 function TryoutForm() {
   return (
-    <div className="w-full px-4 py-6 mx-auto mt-8 bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl xl:mx-0 xl:mr-auto">
+    <div className="w-full px-4 py-6 mx-auto mt-8 bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl lg:mx-0 lg:mr-auto">
       <h2 className="mx-auto text-center sm:hidden acakadut">Pendaftaran</h2>
 
       <form className="text-gray-600">

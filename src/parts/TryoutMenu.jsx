@@ -2,13 +2,13 @@ import React from "react";
 
 function TryoutMenu() {
   return (
-    <div className="w-full px-4 py-6 mx-auto mt-8 mb-24 text-center bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl xl:mx-0 xl:mr-auto">
+    <div className="w-full px-4 py-6 mx-auto mt-8 mb-24 text-center bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl lg:mx-0 lg:mr-auto">
       <h2 className="mx-auto sm:hidden acakadut">Try Out</h2>
-      <p className="mx-auto text-xs px-7 lg:text-xl text-myDarkBlue">
+      <p className="mx-auto text-xs px-7 lg:text-xl sm:text-base myBlueImp ">
         InTO UGM 2022 bekerjasama dengan Pahamify untuk menyelenggarakan Try Out
         ini.
       </p>
-      <p className="mx-auto mt-3 mb-3 text-xs px-7 lg:text-xl text-myDarkBlue">
+      <p className="mx-auto mt-3 mb-3 text-xs px-7 lg:text-xl sm:text-base myBlueImp ">
         Try Out dapat mulai dikerjakan mulai tanggal XX Januari hingga XX
         Januari pukul 23.59 WIB.{" "}
       </p>

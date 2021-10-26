@@ -7,6 +7,7 @@ import TryoutMenu from "../parts/TryoutMenu";
 
 import "./_tryout.css";
 import TryoutForm from "parts/TryoutForm";
+import TryoutJenisUjian from "parts/TryoutJenisUjian";
 
 const TryOut = () => {
   return (
@@ -27,6 +28,8 @@ const TryOut = () => {
         {/* <TryoutMenu /> */}
 
         <TryoutForm />
+
+        {/* <TryoutJenisUjian /> */}
       </div>
 
       {/* footer */}
