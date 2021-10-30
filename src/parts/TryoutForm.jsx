@@ -1,18 +1,55 @@
-import React from "react";
-
-// import "../pages/_tryout.css";
+import React, { useState } from "react";
 
 function TryoutForm() {
+  const [values, setValues] = useState({
+    nama: "",
+    sekolah: "",
+    email: "",
+    noHp: "",
+    noWa: "",
+    pass: "",
+    conPass: "",
+  });
+
+  const handleNamaChange = (newData) => {
+    setValues({ ...values, nama: newData });
+  };
+  const handleSekolahChange = (newData) => {
+    setValues({ ...values, sekolah: newData });
+  };
+  const handleEmailChange = (newData) => {
+    setValues({ ...values, email: newData });
+  };
+  const handleNoHPChange = (newData) => {
+    setValues({ ...values, noHp: newData });
+  };
+  const handleNoWAChange = (newData) => {
+    setValues({ ...values, noWa: newData });
+  };
+  const handlePassChange = (newData) => {
+    setValues({ ...values, pass: newData });
+  };
+  const handleConPassChange = (newData) => {
+    setValues({ ...values, conPass: newData });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(values);
+  };
+
   return (
     <div className="w-full px-4 py-6 mx-auto mt-8 bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl lg:mx-0 lg:mr-auto">
       <h2 className="mx-auto text-center sm:hidden acakadut">Pendaftaran</h2>
 
-      <form className="text-gray-600">
+      <form className="text-gray-600" onSubmit={handleSubmit}>
         <div className="flex flex-col mt-2 sm:flex-row">
           <label className="font-bold w-52 text-mygreen">Nama</label>
           <input
             type="text"
             className="w-full px-3 py-1 text-base rounded-full myInput"
+            onChange={(e) => handleNamaChange(e.target.value)}
+            value={values.nama}
           />
         </div>
 
@@ -21,6 +58,8 @@ function TryoutForm() {
           <input
             type="text"
             className="w-full px-3 py-1 text-base rounded-full myInput"
+            onChange={(e) => handleSekolahChange(e.target.value)}
+            value={values.sekolah}
           />
         </div>
 
@@ -29,6 +68,8 @@ function TryoutForm() {
           <input
             type="text"
             className="w-full px-3 py-1 text-base rounded-full myInput"
+            onChange={(e) => handleEmailChange(e.target.value)}
+            value={values.email}
           />
         </div>
 
@@ -37,6 +78,8 @@ function TryoutForm() {
           <input
             type="text"
             className="w-full px-3 py-1 text-base rounded-full myInput"
+            onChange={(e) => handleNoHPChange(e.target.value)}
+            value={values.noHp}
           />
         </div>
 
@@ -45,6 +88,8 @@ function TryoutForm() {
           <input
             type="text"
             className="w-full px-3 py-1 text-base rounded-full myInput"
+            onChange={(e) => handleNoWAChange(e.target.value)}
+            value={values.noWa}
           />
         </div>
 
@@ -53,6 +98,8 @@ function TryoutForm() {
           <input
             type="password"
             className="w-full px-3 py-1 text-base rounded-full myInput"
+            onChange={(e) => handlePassChange(e.target.value)}
+            value={values.pass}
           />
         </div>
 
@@ -61,6 +108,8 @@ function TryoutForm() {
           <input
             type="password"
             className="w-full px-3 py-1 text-base rounded-full myInput"
+            onChange={(e) => handleConPassChange(e.target.value)}
+            value={values.conPass}
           />
         </div>
 
@@ -70,11 +119,13 @@ function TryoutForm() {
             Password harus berupa kombinasi angka dan huruf
           </p>
 
-          <input
+          <button
             type="submit"
-            value="Daftar"
+            // value="Daftar"
             className="block px-3 py-1 mx-auto mt-1 text-base text-lg font-bold rounded-full sm:mr-0 text-mygreen bg-myYellow sm:px-5"
-          />
+          >
+            Daftar
+          </button>
         </div>
       </form>
       <a
