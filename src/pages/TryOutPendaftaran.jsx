@@ -1,13 +1,13 @@
 import TryOutLayout from "components/TryoutLayout";
-import TryoutMenu from "../parts/TryoutMenu";
+import TryoutForm from "parts/TryoutForm";
 import React from "react";
 
-function TryOut() {
+function TryOutPendaftaran() {
   return (
     <TryOutLayout>
-      <TryoutMenu />
+      <TryoutForm />
     </TryOutLayout>
   );
 }
 
-export default TryOut;
+export default TryOutPendaftaran;

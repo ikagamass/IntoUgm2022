@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TryoutJenisUjian() {
   return (
@@ -8,12 +9,15 @@ function TryoutJenisUjian() {
       {/* button */}
       <div className="flex flex-col sm:flex-row gap-y-3 gap-x-10 sm:justify-between">
         {button.map((item, idx) => (
-          <div className="flex flex-col justify-end flex-grow h-20 px-3 pt-4 pb-2 yellowButton rounded-xl sm:max-w-md md:h-72 sm:h-44">
+          <Link
+            to={item.tujuan}
+            className="flex flex-col justify-end flex-grow h-20 px-3 pt-4 pb-2 yellowButton rounded-xl sm:max-w-md md:h-72 sm:h-44"
+          >
             {/* <p className="text-sm text-left myGreen md:text-lg">{item.teks1}</p> */}
             <p className="mt-3 text-sm font-bold text-right sm:mt-auto myGreen md:text-xl">
               {item.teks2} >
             </p>
-          </div>
+          </Link>
         ))}
         <a
           className="block mt-3 text-base font-semibold text-center text-myDarkBlue sm:hidden"
@@ -32,14 +36,17 @@ export default TryoutJenisUjian;
 const button = [
   {
     teks1: "Belum pernah mendaftar Try Out?",
-    teks2: "Daftar TO",
+    teks2: "Saintek",
+    tujuan: "/try-out/daftar/saintek",
   },
   {
     teks1: "Sudah pernah mendaftar Try Out??",
-    teks2: "Login Akun",
+    teks2: "Soshum",
+    tujuan: "/try-out/daftar/soshum",
   },
   {
     teks1: "Kebingungan Cara Akses Try Out?",
-    teks2: "Panduan TO",
+    teks2: "Khusus",
+    tujuan: "/try-out/daftar/campuran",
   },
 ];

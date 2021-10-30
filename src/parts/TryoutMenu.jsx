@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TryoutMenu() {
   return (
@@ -16,12 +17,15 @@ function TryoutMenu() {
       {/* button */}
       <div className="flex flex-col sm:flex-row gap-y-3 gap-x-3 sm:justify-between">
         {button.map((item, idx) => (
-          <div className="flex flex-col justify-between px-3 pt-4 pb-2 yellowButton rounded-xl sm:max-w-xs md:h-48 sm:h-44">
+          <Link
+            to={item.tujuan}
+            className="flex flex-col justify-between px-3 pt-4 pb-2 yellowButton rounded-xl sm:max-w-xs md:h-48 sm:h-44"
+          >
             <p className="text-sm text-left myGreen md:text-lg">{item.teks1}</p>
             <p className="mt-3 text-sm font-bold text-right sm:mt-auto myGreen md:text-xl">
               {item.teks2} >
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -34,13 +38,16 @@ const button = [
   {
     teks1: "Belum pernah mendaftar Try Out?",
     teks2: "Daftar TO",
+    tujuan: "/try-out/kluster",
   },
   {
     teks1: "Sudah pernah mendaftar Try Out??",
     teks2: "Login Akun",
+    tujuan: "/",
   },
   {
     teks1: "Kebingungan Cara Akses Try Out?",
     teks2: "Panduan TO",
+    tujuan: "/",
   },
 ];
