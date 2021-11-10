@@ -1,11 +1,11 @@
 import TryOutLayout from "components/TryoutLayout";
-import TryoutMenu from "../parts/TryoutMenu";
+import ToMenu from "../parts/ToMenu";
 import React from "react";
 
 function TryOut() {
   return (
     <TryOutLayout>
-      <TryoutMenu />
+      <ToMenu />
     </TryOutLayout>
   );
 }

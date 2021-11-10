@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function TryoutForm() {
+function ToForm() {
   const [values, setValues] = useState({
     nama: "",
     sekolah: "",
@@ -9,6 +9,16 @@ function TryoutForm() {
     noWa: "",
     pass: "",
     conPass: "",
+  });
+
+  const [isValid, setValid] = useState({
+    isValidNama: "empty",
+    isValidSekolah: "empty",
+    isValidEmail: "empty",
+    isValidNoHp: "empty",
+    isValidNoWa: "empty",
+    isValidPass: "empty",
+    isValidConPass: "empty",
   });
 
   const handleNamaChange = (newData) => {
@@ -33,9 +43,92 @@ function TryoutForm() {
     setValues({ ...values, conPass: newData });
   };
 
+  function validateEmail(email) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  function validatePhoneNumber(input_str) {
+    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    return re.test(input_str);
+  }
+
+  function validatePassword(input_str) {
+    var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/im;
+
+    return re.test(input_str);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(values);
+
+    // validation
+
+    // nama
+    if (values.nama === "") {
+      console.log("hiya namanya kosong");
+      setValid({ ...isValid, isValidNama: "empty" });
+    } else {
+      console.log("namanya benar woyyy");
+      setValid({ ...isValid, isValidNama: "true" });
+    }
+
+    // sekolah
+    if (values.sekolah === "") {
+      setValid({ ...isValid, isValidSekolah: "empty" });
+    } else {
+      setValid({ ...isValid, isValidSekolah: "true" });
+    }
+
+    // email
+    if (values.email === "") {
+      setValid({ ...isValid, isValidEmail: "empty" });
+    } else if (validateEmail(values.email)) {
+      setValid({ ...isValid, isValidEmail: "true" });
+    } else {
+      setValid({ ...isValid, isValidEmail: "false" });
+    }
+
+    // hp
+    if (values.noHp === "") {
+      setValid({ ...isValid, isValidNoHp: "empty" });
+    } else if (validatePhoneNumber(values.email)) {
+      setValid({ ...isValid, isValidNoHp: "true" });
+    } else {
+      setValid({ ...isValid, isValidNoHp: "false" });
+    }
+
+    // wa
+    if (values.noWa === "") {
+      setValid({ ...isValid, isValidNoWa: "empty" });
+    } else if (validatePhoneNumber(values.email)) {
+      setValid({ ...isValid, isValidNoWa: "true" });
+    } else {
+      setValid({ ...isValid, isValidNoWa: "false" });
+    }
+
+    // password
+    if (values.pass === "") {
+      setValid({ ...isValid, isValidPass: "empty" });
+    } else if (validatePassword(values.pass)) {
+      setValid({ ...isValid, isValidPass: "true" });
+    } else {
+      setValid({ ...isValid, isValidPass: "false" });
+    }
+
+    // password confirmation
+    if (values.conPass === "") {
+      setValid({ ...isValid, isValidConPass: "empty" });
+    } else if (values.conPass === values.pass) {
+      setValid({ ...isValid, isValidConPass: "true" });
+    } else {
+      setValid({ ...isValid, isValidConPass: "false" });
+    }
+
+    console.log(isValid);
   };
 
   return (
@@ -139,19 +232,4 @@ function TryoutForm() {
   );
 }
 
-export default TryoutForm;
-
-const button = [
-  {
-    teks1: "Belum pernah mendaftar Try Out?",
-    teks2: "Daftar TO",
-  },
-  {
-    teks1: "Sudah pernah mendaftar Try Out??",
-    teks2: "Login Akun",
-  },
-  {
-    teks1: "Kebingungan Cara Akses Try Out?",
-    teks2: "Panduan TO",
-  },
-];
+export default ToForm;

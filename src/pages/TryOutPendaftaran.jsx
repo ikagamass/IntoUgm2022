@@ -1,5 +1,5 @@
 import TryOutLayout from "components/TryoutLayout";
-import TryoutForm from "parts/TryoutForm";
+import ToForm from "parts/ToForm";
 import React from "react";
 import { useParams } from "react-router-dom";
 
@@ -8,8 +8,8 @@ function TryOutPendaftaran() {
   console.log(kluster);
 
   return (
-    <TryOutLayout>
-      <TryoutForm />
+    <TryOutLayout backto="/try-out/kluster">
+      <ToForm />
     </TryOutLayout>
   );
 }

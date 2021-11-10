@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TryoutMenu() {
+function ToMenu() {
   return (
     <div className="w-full px-4 py-6 mx-auto mt-8 mb-24 text-center bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl lg:mx-0 lg:mr-auto">
       <h2 className="mx-auto sm:hidden acakadut">Try Out</h2>
@@ -32,7 +32,7 @@ function TryoutMenu() {
   );
 }
 
-export default TryoutMenu;
+export default ToMenu;
 
 const button = [
   {
@@ -43,7 +43,7 @@ const button = [
   {
     teks1: "Sudah pernah mendaftar Try Out??",
     teks2: "Login Akun",
-    tujuan: "/",
+    tujuan: "/login",
   },
   {
     teks1: "Kebingungan Cara Akses Try Out?",

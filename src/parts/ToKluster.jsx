@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function TryoutJenisUjian() {
+function ToKluster() {
   return (
     <div className="w-full px-4 py-6 mx-auto mt-8 mb-24 text-center bg-white sm:bg-transparent rounded-3xl bg-opacity-70 sm:max-w-5xl lg:mx-0 lg:mr-auto">
       <h2 className="mx-auto sm:hidden acakadut">Pendaftaran</h2>
@@ -31,7 +31,7 @@ function TryoutJenisUjian() {
   );
 }
 
-export default TryoutJenisUjian;
+export default ToKluster;
 
 const button = [
   {
