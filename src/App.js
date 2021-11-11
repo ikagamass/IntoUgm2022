@@ -8,6 +8,7 @@ import TourDeFaculty from "./pages/TourDeFaculty";
 import TryOut from "./pages/TryOut.jsx";
 
 import Login from "pages/Login";
+import Profile from "pages/Profile";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
 
         {/* Login */}
         <Route path="/login" component={Login} />
-        
+        <Route path="/profile" component={Profile}/>
+
+
         <Route exact path="/live" component={Live} />
         <Route exact path="/tour-de-faculty" component={TourDeFaculty} />
       </Switch>
