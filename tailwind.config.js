@@ -18,6 +18,7 @@ module.exports = {
         mygreen:"#11645B",
         myDarkBlue: "#00295D",
         myYellow: "#E2D234",
+        myDarkGreen: "#11645B",
       },
       fontFamily: {
         main: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',

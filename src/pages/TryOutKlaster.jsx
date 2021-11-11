@@ -1,11 +1,11 @@
 import TryOutLayout from "components/TryoutLayout";
-import TryoutJenisUjian from "../parts/TryoutJenisUjian";
+import ToKluster from "../parts/ToKluster";
 import React from "react";
 
 function TryOutKluster() {
   return (
-    <TryOutLayout>
-      <TryoutJenisUjian />
+    <TryOutLayout backto="/try-out">
+      <ToKluster />
     </TryOutLayout>
   );
 }
