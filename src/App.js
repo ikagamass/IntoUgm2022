@@ -1,14 +1,14 @@
-import TryOutKlaster from "pages/TryOutKlaster";
-import TryOutPendaftaran from "pages/TryOutPendaftaran";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import TryOutKlaster from "views/pages/TryOutKlaster";
+import TryOutPendaftaran from "views/pages/TryOutPendaftaran";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Live from "./pages/Live";
-import TourDeFaculty from "./pages/TourDeFaculty";
-import TryOut from "./pages/TryOut.jsx";
+import Home from "./views/pages/Home";
+import Live from "./views/pages/Live";
+import TourDeFaculty from "./views/pages/TourDeFaculty";
+import TryOut from "./views/pages/TryOut.jsx";
 
-import Login from "pages/Login";
-import Profile from "pages/Profile";
+import Login from "views/pages/Login";
+import Profile from "views/pages/Profile";
 
 function App() {
   return (
@@ -23,8 +23,7 @@ function App() {
 
         {/* Login */}
         <Route path="/login" component={Login} />
-        <Route path="/profile" component={Profile}/>
-
+        <Route path="/profile" component={Profile} />
 
         <Route exact path="/live" component={Live} />
         <Route exact path="/tour-de-faculty" component={TourDeFaculty} />

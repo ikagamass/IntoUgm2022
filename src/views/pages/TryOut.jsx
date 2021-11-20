@@ -1,4 +1,4 @@
-import TryOutLayout from "components/TryoutLayout";
+import TryOutLayout from "../components/TryoutLayout";
 import ToMenu from "../parts/ToMenu";
 import React from "react";
 

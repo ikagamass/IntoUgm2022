@@ -80,42 +80,42 @@
 
 @font-face {
   font-family: "albert";
-  src: url("../../fonts/AlbertSans-Light.woff2") format("woff");
+  src: url("../fonts/AlbertSans-Light.woff2") format("woff");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "albert";
-  src: url("../../fonts/AlbertSans-Regular.woff2") format("woff");
+  src: url("../fonts/AlbertSans-Regular.woff2") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "albert";
-  src: url("../../fonts/AlbertSans-Medium.woff2") format("woff");
+  src: url("../fonts/AlbertSans-Medium.woff2") format("woff");
   font-weight: medium;
   font-style: normal;
 }
 
 @font-face {
   font-family: "albert";
-  src: url("../../fonts/AlbertSans-SemiBold.woff2") format("woff");
+  src: url("../fonts/AlbertSans-SemiBold.woff2") format("woff");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "albert";
-  src: url("../../fonts/AlbertSans-Bold.woff2") format("woff");
+  src: url("../fonts/AlbertSans-Bold.woff2") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "acakadut";
-  src: url("../../fonts/aAcakadut.ttf") format("ttf");
+  src: url("../fonts/aAcakadut.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }

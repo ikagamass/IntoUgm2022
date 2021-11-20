@@ -1,4 +1,4 @@
-import TryOutLayout from "components/TryoutLayout";
+import TryOutLayout from "../components/TryoutLayout";
 import ToKluster from "../parts/ToKluster";
 import React from "react";
 

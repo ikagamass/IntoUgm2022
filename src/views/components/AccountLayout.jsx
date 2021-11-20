@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "./../images/logo.png";
-import logo2 from "./../images/logo2.png";
-import ikagamas from "./../images/ikagamass.png";
+import logo from "../../assets/images/logo.png";
+import logo2 from "../../assets/images/logo2.png";
+import ikagamas from "../../assets/images/ikagamass.png";
 
 import { IoChevronBack } from "react-icons/io5";
 
-import "./../core/styles/_tryout.css";
+import "../../assets/styles/_tryout.css";
 import { Link } from "react-router-dom";
 
 function AccountLayout({ children }) {

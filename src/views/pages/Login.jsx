@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AccountLayout from "components/AccountLayout";
+import AccountLayout from "../components/AccountLayout";
 
 function Login() {
   const [values, setValues] = useState({
