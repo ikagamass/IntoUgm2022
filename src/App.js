@@ -9,7 +9,9 @@ import TryOut from "./views/pages/TryOut.jsx";
 
 import Login from "views/pages/Login";
 import Profile from "views/pages/Profile";
+
 import badutPage from "views/badut/BadutPage";
+import badutHomePage from "views/badut/BadutHomePage";
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
 
         {/* Badut */}
         <Route exact path="/badut" component={badutPage} />
+        <Route exact path="/badutHome" component={badutHomePage} />
       </Switch>
     </Router>
   );
