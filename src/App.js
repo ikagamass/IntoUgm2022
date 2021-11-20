@@ -9,6 +9,7 @@ import TryOut from "./views/pages/TryOut.jsx";
 
 import Login from "views/pages/Login";
 import Profile from "views/pages/Profile";
+import badutPage from "views/badut/BadutPage";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
 
         <Route exact path="/live" component={Live} />
         <Route exact path="/tour-de-faculty" component={TourDeFaculty} />
+
+        {/* Badut */}
+        <Route exact path="/badut" component={badutPage} />
       </Switch>
     </Router>
   );
