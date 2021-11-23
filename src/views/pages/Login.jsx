@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AccountLayout from "../components/AccountLayout";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [values, setValues] = useState({
@@ -106,9 +107,17 @@ function Login() {
           </div>
         </form>
       </div>
-      <p className="mt-10 font-semibold text-center text-mygreen ">
-        Belum punya akun? <span className="font-bold">Daftar sekarang</span>
-      </p>
+      <div className="flex-cc mt-10 gap-2">
+        <p className="font-semibold text-center text-mygreen ">
+          Belum punya akun?
+        </p>
+        <Link
+          className="font-bold text-center text-mygreen"
+          to={"try-out/kluster"}
+        >
+          {"Daftar Sekarang"}
+        </Link>
+      </div>
     </AccountLayout>
   );
 }

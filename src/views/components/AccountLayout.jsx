@@ -32,7 +32,7 @@ function AccountLayout({ children }) {
         <div className="px-10 mt-12 mb-5 sm:mt-0">
           <Link
             className="inline-block px-3 py-2 text-lg font-bold text-white rounded-full n bg-myDarkGreen"
-            to={"/login"}
+            to={"/try-out"}
           >
             <IoChevronBack className="inline mr-1" />
             Kembali

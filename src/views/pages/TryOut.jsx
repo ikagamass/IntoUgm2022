@@ -4,7 +4,7 @@ import React from "react";
 
 function TryOut() {
   return (
-    <TryOutLayout>
+    <TryOutLayout backto={"/"}>
       <ToMenu />
     </TryOutLayout>
   );
