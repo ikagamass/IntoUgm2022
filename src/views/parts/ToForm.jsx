@@ -1,6 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import ConfirmRegistration from "views/components/modal/ConfirmRegistration";
 
 function ToForm() {
+  const [isOpen, setIsOpen] = useState(true); // modal
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  useEffect(() => {
+    console.log(isOpen);
+  }, [isOpen]);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const [values, setValues] = useState({
     nama: "",
     sekolah: "",
@@ -213,11 +228,12 @@ function ToForm() {
           </p>
 
           <button
-            type="submit"
+            // type="submit"
             // value="Daftar"
+            onClick={openModal}
             className="block px-3 py-1 mx-auto mt-1 text-base text-lg font-bold rounded-full sm:mr-0 text-mygreen bg-myYellow sm:px-5"
           >
-            Daftar
+            Daftar {isOpen}
           </button>
         </div>
       </form>
@@ -228,6 +244,7 @@ function ToForm() {
         Sudah pernah mendaftar?{" "}
         <span className="font-bold ">Login Sekarang!</span>
       </a>
+      {isOpen && <ConfirmRegistration closeModal={closeModal} />}
     </div>
   );
 }
