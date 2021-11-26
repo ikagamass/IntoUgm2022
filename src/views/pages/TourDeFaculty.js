@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import UserOnlyRoute from "../../core/routeblocks/UserOnlyRoute";
 
 const TourDeFaculty = () => {
-    return (
-        <div>
-            ini tour de facultty
-        </div>
-    )
-}
+  return (
+    <UserOnlyRoute redirect="/login">
+      <div>ini tour de facultty</div>
+    </UserOnlyRoute>
+  );
+};
 
-export default TourDeFaculty
+export default TourDeFaculty;

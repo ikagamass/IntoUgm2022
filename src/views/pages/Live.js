@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import UserOnlyRoute from "../../core/routeblocks/UserOnlyRoute";
 
 const Live = () => {
-    return (
-        <div>
-            ini live
-        </div>
-    )
-}
+  return (
+    <UserOnlyRoute redirect="/login">
+      <div>ini live</div>
+    </UserOnlyRoute>
+  );
+};
 
-export default Live
+export default Live;

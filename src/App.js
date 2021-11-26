@@ -1,6 +1,7 @@
 import TryOutKlaster from "views/pages/TryOutKlaster";
 import TryOutPendaftaran from "views/pages/TryOutPendaftaran";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ContextProvider from "./core/contexts";
 
 import Home from "./views/pages/Home";
 import Live from "./views/pages/Live";
@@ -15,27 +16,32 @@ import badutHomePage from "views/badut/BadutHomePage";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
+    <ContextProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
 
-        {/* tryout */}
-        <Route exact path="/try-out" component={TryOut} />
-        <Route exact path="/try-out/kluster" component={TryOutKlaster} />
-        <Route path="/try-out/daftar/:kluster" component={TryOutPendaftaran} />
+          {/* tryout */}
+          <Route exact path="/try-out" component={TryOut} />
+          <Route exact path="/try-out/kluster" component={TryOutKlaster} />
+          <Route
+            path="/try-out/daftar/:kluster"
+            component={TryOutPendaftaran}
+          />
 
-        {/* Login */}
-        <Route path="/login" component={Login} />
-        <Route path="/profile" component={Profile} />
+          {/* Login */}
+          <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
 
-        <Route exact path="/live" component={Live} />
-        <Route exact path="/tour-de-faculty" component={TourDeFaculty} />
+          <Route exact path="/live" component={Live} />
+          <Route exact path="/tour-de-faculty" component={TourDeFaculty} />
 
-        {/* Badut */}
-        <Route exact path="/badut" component={badutPage} />
-        <Route exact path="/badutHome" component={badutHomePage} />
-      </Switch>
-    </Router>
+          {/* Badut */}
+          <Route exact path="/badut" component={badutPage} />
+          <Route exact path="/badutHome" component={badutHomePage} />
+        </Switch>
+      </Router>
+    </ContextProvider>
   );
 }
 
