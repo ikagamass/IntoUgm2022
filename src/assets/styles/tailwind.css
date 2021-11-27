@@ -115,9 +115,17 @@
 
 @font-face {
   font-family: "acakadut";
-  src: url("../fonts/aAcakadut.ttf") format("ttf");
+  src: url("../fonts/aAcakadut.woff2") format("woff2"),
+    url("../fonts/aAcakadut.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+.font-acakadut {
+  font-size: 60px;
+  color: "#11645b";
+  font-family: "acakadut";
 }
 
 body {

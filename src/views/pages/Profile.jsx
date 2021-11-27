@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import AccountLayout from "../components/AccountLayout";
-import Eula from "../../assets/images/eula.jpg";
+import PlaceHolder from "../../assets/images/placeholder.jpg";
 import Wa from "../../assets/images/wa.svg";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 import UserOnlyRoute from "core/routeblocks/UserOnlyRoute";
 import WarnPayment from "views/components/modal/WarnPayment";
+
+import ampas from "../../assets/images/loginBackround.jpg";
 
 function Profile() {
   const [isOpen, setIsOpen] = useState(true); // modal
@@ -24,7 +26,7 @@ function Profile() {
     <UserOnlyRoute>
       <AccountLayout>
         {isOpen && <WarnPayment closeModal={closeModal} />}
-        <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block">
+        <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
           Akun
         </h4>
 
@@ -34,7 +36,9 @@ function Profile() {
             <div className="relative justify-center hidden -my-6 -ml-4 bg-green-800 sm:flex sm:flex-col rounded-3xl sm:col-span-1">
               <div className="">
                 <img
-                  src={Eula}
+                  src={ampas}
+                  width="150"
+                  height="150"
                   alt="Foto profile"
                   className="mx-auto mb-3 rounded-full md:w-40 sm:w-32"
                 />
@@ -56,8 +60,9 @@ function Profile() {
 
                 {/* Foto Mobile */}
                 <img
-                  src={Eula}
+                  src={PlaceHolder}
                   width="100"
+                  height="100"
                   alt="Foto profile"
                   className="mt-2 rounded-full sm:hidden"
                 />

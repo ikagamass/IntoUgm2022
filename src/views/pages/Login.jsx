@@ -60,7 +60,7 @@ function Login() {
   };
   return (
     <AccountLayout>
-      <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block">
+      <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
         Login Akun
       </h4>
       <div className="w-full px-4 py-6 mx-auto mt-8 bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl ">
@@ -107,12 +107,12 @@ function Login() {
           </div>
         </form>
       </div>
-      <div className="flex-cc mt-10 gap-2">
+      <div className="gap-2 mt-10 flex-cc">
         <p className="font-semibold text-center text-mygreen ">
           Belum punya akun?
         </p>
         <Link
-          className="font-bold text-center text-mygreen"
+          className="font-bold text-center text-mygreen hover:text-myDarkBlue"
           to={"try-out/kluster"}
         >
           {"Daftar Sekarang"}
