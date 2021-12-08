@@ -1,29 +1,33 @@
 import { useState, useEffect } from "react";
+import { POST_REGISTER, POST_LOGIN } from "../../api";
 
 const AuthStore = () => {
   const [userData, setUserData] = useState({});
+  const [token, setToken] = useState("");
   const [status, setStatus] = useState("initial"); // initial | user | guest
 
   const authMethods = {
     authenticate: () => {},
-    login: (username, password) => {
+    login: async (props) => {
+      const res = await POST_LOGIN(props);
       //success
-      setStatus("user");
-      // fail
-      setStatus("guest");
+      if (res.status === "OK") {
+        console.log("login");
+        setStatus("user");
+      } else {
+        setStatus("guest");
+      }
     },
-    signup: ({ name, email, password }) => {
-      // return gamaxios
-      //   .post("/register-customer", {
-      //     name,
-      //     email,
-      //     password,
-      //   })
-      //   .then((res) => {
-      //     setStatus("user");
-      //     setUserData(res.data.body.user_data);
-      //   })
-      //   .catch((err) => console.log(err.response.data.message));
+    register: async (props) => {
+      const res = await POST_REGISTER(props);
+      setUserData(res.data.body.user_data);
+      setToken(res.data.body.token);
+      if (res.status === "OK") {
+        setStatus("user");
+      } else {
+        setStatus("guest");
+      }
+      console.log(userData);
     },
     logout: () => {
       setStatus("guest");
@@ -34,9 +38,18 @@ const AuthStore = () => {
     //masuk
     setStatus("user");
   }, []);
+
   useEffect(() => {
     console.log(userData);
   }, [userData]);
+
+  useEffect(() => {
+    console.log("save token");
+    if (token) localStorage.setItem("token", token);
+    else {
+      console.log("ga ada token");
+    }
+  }, [token]);
 
   return {
     status,

@@ -21,18 +21,18 @@ export const POST_REGISTER = ({
   password,
   mataUjian,
 }) => {
-  // const response = {
-  //   token: "vcdtykmasdasdsa",
-  //   user_data: {
-  //     _id: "1",
-  //     nama: "test",
-  //     asalSekolah: "test",
-  //     email: "test@gmail.com",
-  //     noHp: "08123456789",
-  //     noWa: "08123456789",
-  //     mataUjian: "saintek",
-  //   },
-  // };
+  const response = {
+    token: "vcdtykmasdasdsa",
+    user_data: {
+      _id: "1",
+      nama: "test",
+      asalSekolah: "test",
+      email: "test@gmail.com",
+      noHp: "08123456789",
+      noWa: "08123456789",
+      mataUjian: "saintek",
+    },
+  };
 
   intoaxios.post("/user/register", {
     nama,

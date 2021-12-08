@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ConfirmRegistration from "views/components/modal/ConfirmRegistration";
 import TitleText from "views/components/TitleText";
+import { useLocation } from "react-router-dom";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { useAuth } from "core/contexts";
 
 function ToForm() {
-  const [isOpen, setIsOpen] = useState(true); // modal
+  const location = useLocation();
+  const klaster = location.pathname.split("/")[3];
+
+  const [isOpen, setIsOpen] = useState(false); //
+  const { authMethods } = useAuth();
+  const [confirm, setConfirm] = useState(false);
 
   const openModal = () => {
     setIsOpen(true);
   };
 
   useEffect(() => {
-    console.log(isOpen);
+    // console.log(isOpen);
   }, [isOpen]);
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const confirmTrue = () => {
+    setConfirm(true);
   };
 
   const [values, setValues] = useState({
@@ -77,7 +90,7 @@ function ToForm() {
     return re.test(input_str);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(values);
 
@@ -85,7 +98,6 @@ function ToForm() {
 
     // nama
     if (values.nama === "") {
-      console.log("hiya namanya kosong");
       setValid({ ...isValid, isValidNama: "empty" });
     } else {
       console.log("namanya benar woyyy");
@@ -144,8 +156,50 @@ function ToForm() {
       setValid({ ...isValid, isValidConPass: "false" });
     }
 
-    console.log(isValid);
+    const result = await authMethods.register({
+      nama: values.nama,
+      asalSekolah: values.sekolah,
+      email: values.email,
+      noHp: values.noHp,
+      noWa: values.noWa,
+      password: values.pass,
+      mataUjian: klaster,
+    });
+    console.log(result);
   };
+
+  const confirmModal = (
+    <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80 ">
+      {/* modal */}
+      <div
+        className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
+        style={{ width: "610px" }}
+      >
+        <p className="font-bold text-center text-mygreen">
+          Mohon pastikan data yang telah Anda isikan sudah benar dan sesuai
+          dengan yang ingin anda masukkan pada akun Pahamify Anda!
+        </p>
+
+        <div className="flex justify-between w-full mt-7">
+          <button
+            className="py-1 px-3 text-lg font-bold text-white rounded-full bg-myDarkGreen"
+            onClick={closeModal}
+          >
+            <IoChevronBack className="inline mr-1" />
+            Kembali
+          </button>
+          <button
+            type="submit"
+            className="py-1 px-3 text-lg font-bold text-white rounded-full bg-myDarkGreen"
+            onClick={confirmTrue}
+          >
+            Lanjutkan
+            <IoChevronForward className="inline mr-1" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -231,23 +285,28 @@ function ToForm() {
             </p>
 
             <button
-              // type="submit"
-              // value="Daftar"
-              onClick={openModal}
+              type="submit"
               className="block px-3 py-1 mx-auto mt-1 text-base text-lg font-bold rounded-full sm:mr-0 text-mygreen bg-myYellow sm:px-5"
             >
               Daftar {isOpen}
             </button>
           </div>
         </form>
-        <a
-          className="block mt-3 text-base font-semibold text-center text-myDarkBlue"
-          style={{ textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
-        >
-          Sudah pernah mendaftar?{" "}
-          <span className="font-bold ">Login Sekarang!</span>
-        </a>
-        {isOpen && <ConfirmRegistration closeModal={closeModal} />}
+        <div className="flex-cc gap-2">
+          <p
+            className="block mt-3 text-base font-semibold text-center text-myDarkBlue"
+            style={{ textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+          >
+            Sudah pernah mendaftar?{" "}
+          </p>
+          <Link
+            to={"/login"}
+            className="font-bold mt-3 text-base text-center text-myDarkBlue"
+            style={{ textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+          >
+            Login Sekarang!
+          </Link>
+        </div>
       </div>
     </>
   );
