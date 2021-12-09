@@ -18,15 +18,24 @@ const AuthStore = () => {
         setStatus("guest");
       }
     },
+
     register: async (props) => {
       const res = await POST_REGISTER(props);
+      console.log(res);
+      console.log("woyyy gua disini jalan napa");
+
       setUserData(res.data.body.user_data);
       setToken(res.data.body.token);
-      if (res.status === "OK") {
+
+      if (res.data.status === "OK") {
+        console.log("user");
         setStatus("user");
       } else {
         setStatus("guest");
+        console.log("guest");
+        console.log(res.data.status);
       }
+
       console.log(userData);
     },
     logout: () => {
