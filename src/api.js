@@ -16,35 +16,48 @@ export const POST_REGISTER = ({
   nama,
   asalSekolah,
   email,
-  noHp,
-  noWa,
+  noHP,
+  noWA,
   password,
   mataUjian,
 }) => {
-  const response = {
-    token: "vcdtykmasdasdsa",
-    user_data: {
-      _id: "1",
-      nama: "test",
-      asalSekolah: "test",
-      email: "test@gmail.com",
-      noHp: "08123456789",
-      noWa: "08123456789",
-      mataUjian: "saintek",
-    },
-  };
+  // const response = {
+  //   token: "vcdtykmasdasdsa",
+  //   user_data: {
+  //     _id: "1",
+  //     nama: "test",
+  //     asalSekolah: "test",
+  //     email: "test@gmail.com",
+  //     noHP: "08123456789",
+  //     noWA: "08123456789",
+  //     mataUjian: "saintek",
+  //   },
+  // };
 
-  intoaxios.post("/user/register", {
+  console.log({
     nama,
     asalSekolah,
     email,
-    noHp,
-    noWa,
+    noHP,
+    noWA,
     password,
     mataUjian,
   });
 
-  return send({ status: "OK", code: "success", body: response });
+  return fetch("https://into-ugm-api.herokuapp.com/user/register", {
+    method: "POST",
+    body: {
+      nama,
+      asalSekolah,
+      email,
+      noHP,
+      noWA,
+      password,
+      mataUjian,
+    },
+  });
+
+  // return send({ status: "OK", code: "success", body: response });
 };
 
 export const POST_LOGIN = ({ email, password }) => {

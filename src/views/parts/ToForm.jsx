@@ -156,15 +156,20 @@ function ToForm() {
       setValid({ ...isValid, isValidConPass: "false" });
     }
 
-    const result = await authMethods.register({
+    const payload = {
       nama: values.nama,
       asalSekolah: values.sekolah,
       email: values.email,
-      noHp: values.noHp,
-      noWa: values.noWa,
+      noHP: values.noHp,
+      noWA: values.noWa,
       password: values.pass,
       mataUjian: klaster,
-    });
+    };
+
+    console.log(payload);
+
+    const result = await authMethods.register(payload);
+    console.log("res");
     console.log(result);
   };
 

@@ -20,21 +20,23 @@ const AuthStore = () => {
     },
 
     register: async (props) => {
+      console.log("prtop");
+      console.log(props);
       const res = await POST_REGISTER(props);
       console.log(res);
       console.log("woyyy gua disini jalan napa");
 
-      setUserData(res.data.body.user_data);
-      setToken(res.data.body.token);
+      // setUserData(res.data.body.user_data);
+      // setToken(res.data.body.token);
 
-      if (res.data.status === "OK") {
-        console.log("user");
-        setStatus("user");
-      } else {
-        setStatus("guest");
-        console.log("guest");
-        console.log(res.data.status);
-      }
+      // if (res.data.status === "OK") {
+      //   console.log("user");
+      //   setStatus("user");
+      // } else {
+      //   setStatus("guest");
+      //   console.log("guest");
+      //   // console.log(res.data.status);
+      // }
 
       console.log(userData);
     },
