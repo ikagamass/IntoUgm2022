@@ -3,7 +3,7 @@ const send = (data) =>
   new Promise((resolve) => setTimeout(() => resolve({ data: data }), 2000));
 
 const intoaxios = axios.create({
-  baseURL: "https://into-ugm-api.herokuapp.com",
+  baseURL: "http://into-ugm-api.herokuapp.com",
 });
 
 export default intoaxios;
@@ -44,17 +44,17 @@ export const POST_REGISTER = ({
     mataUjian,
   });
 
-  return fetch("https://into-ugm-api.herokuapp.com/user/register", {
-    method: "POST",
-    body: {
-      nama,
-      asalSekolah,
-      email,
-      noHP,
-      noWA,
-      password,
-      mataUjian,
-    },
+  return intoaxios.post("/user/register", {
+    nama,
+    asalSekolah,
+    email,
+    noHP,
+    noWA,
+    password,
+    mataUjian,
+  }).catch(err=>{
+    console.log(err.response);
+    console.log(err.request);
   });
 
   // return send({ status: "OK", code: "success", body: response });
