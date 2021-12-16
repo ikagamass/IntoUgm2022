@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ConfirmRegistration from "views/components/modal/ConfirmRegistration";
 import TitleText from "views/components/TitleText";
 import { useLocation } from "react-router-dom";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
@@ -12,22 +11,17 @@ function ToForm() {
 
   const [isOpen, setIsOpen] = useState(false); //
   const { authMethods } = useAuth();
-  const [confirm, setConfirm] = useState(false);
 
   const openModal = () => {
     setIsOpen(true);
   };
 
   useEffect(() => {
-    // console.log(isOpen);
+    console.log(isOpen);
   }, [isOpen]);
 
   const closeModal = () => {
     setIsOpen(false);
-  };
-
-  const confirmTrue = () => {
-    setConfirm(true);
   };
 
   const [values, setValues] = useState({
@@ -165,16 +159,16 @@ function ToForm() {
       password: values.pass,
       mataUjian: klaster,
     };
+    console.log("payload");
 
     console.log(payload);
 
     const result = await authMethods.register(payload);
-    console.log("res");
     console.log(result);
   };
 
   const confirmModal = (
-    <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80 ">
+    <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80">
       {/* modal */}
       <div
         className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
@@ -194,9 +188,8 @@ function ToForm() {
             Kembali
           </button>
           <button
-            type="submit"
             className="py-1 px-3 text-lg font-bold text-white rounded-full bg-myDarkGreen"
-            onClick={confirmTrue}
+            onClick={handleSubmit}
           >
             Lanjutkan
             <IoChevronForward className="inline mr-1" />
@@ -205,6 +198,7 @@ function ToForm() {
       </div>
     </div>
   );
+  console.log(isOpen);
 
   return (
     <>
@@ -212,7 +206,7 @@ function ToForm() {
       <div className="w-full px-4 py-6 mx-auto mt-8 bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl lg:mx-0 lg:mr-auto">
         <h2 className="mx-auto text-center sm:hidden acakadut">Pendaftaran</h2>
 
-        <form className="text-gray-600" onSubmit={handleSubmit}>
+        <div className="text-gray-600">
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Nama</label>
             <input
@@ -290,13 +284,13 @@ function ToForm() {
             </p>
 
             <button
-              type="submit"
+              onClick={openModal}
               className="block px-3 py-1 mx-auto mt-1 text-base text-lg font-bold rounded-full sm:mr-0 text-mygreen bg-myYellow sm:px-5"
             >
-              Daftar {isOpen}
+              Daftar
             </button>
           </div>
-        </form>
+        </div>
         <div className="flex-cc gap-2">
           <p
             className="block mt-3 text-base font-semibold text-center text-myDarkBlue"
@@ -313,6 +307,7 @@ function ToForm() {
           </Link>
         </div>
       </div>
+      <>{isOpen && confirmModal}</>
     </>
   );
 }
