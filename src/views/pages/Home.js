@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SplashScreen from "views/parts/SplashScreen";
 import Navbar from "../components/Navbar";
+import Initial from "../../core/routeblocks/Initial";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(true); // modal
@@ -21,18 +22,20 @@ const Home = () => {
     setIsOpen(false);
   };
   return (
-    <section
-      className="flex flex-col justify-between min-h-screen text-lg bg-left-bottom"
-      style={{
-        background: "url('/images/bgdesktop.jpg')",
-        backgroundSize: "auto 100%",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      {isOpen && <SplashScreen closeSplash={closeSplash} />}
+    <Initial>
+      <section
+        className="flex flex-col justify-between min-h-screen text-lg bg-left-bottom"
+        style={{
+          background: "url('/images/bgdesktop.jpg')",
+          backgroundSize: "auto 100%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {isOpen && <SplashScreen closeSplash={closeSplash} />}
 
-      <Navbar />
-    </section>
+        <Navbar />
+      </section>
+    </Initial>
   );
 };
 
