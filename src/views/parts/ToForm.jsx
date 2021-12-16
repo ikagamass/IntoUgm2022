@@ -159,12 +159,8 @@ function ToForm() {
       password: values.pass,
       mataUjian: klaster,
     };
-    console.log("payload");
 
-    console.log(payload);
-
-    const result = await authMethods.register(payload);
-    console.log(result);
+    await authMethods.register(payload);
   };
 
   const confirmModal = (
@@ -198,7 +194,6 @@ function ToForm() {
       </div>
     </div>
   );
-  console.log(isOpen);
 
   return (
     <>

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import AccountLayout from "../components/AccountLayout";
 import { Link } from "react-router-dom";
+import { useAuth } from "core/contexts";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  const { authMethods, status, userData } = useAuth();
+  const history = useHistory();
+
   const [values, setValues] = useState({
     email: "",
     pass: "",
@@ -32,9 +37,8 @@ function Login() {
     return re.test(input_str);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(values);
 
     // validation
 
@@ -56,7 +60,16 @@ function Login() {
       setValid({ ...isValid, isValidPass: "false" });
     }
 
-    console.log(isValid);
+    const payload = {
+      email: values.email,
+      password: values.pass,
+    };
+
+    await authMethods.login(payload);
+    if (status === "user") {
+      // history.push("/profile");
+      console.log(userData);
+    }
   };
   return (
     <AccountLayout>

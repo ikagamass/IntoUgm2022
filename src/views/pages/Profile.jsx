@@ -5,11 +5,14 @@ import Wa from "../../assets/images/wa.svg";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 import UserOnlyRoute from "core/routeblocks/UserOnlyRoute";
 import WarnPayment from "views/components/modal/WarnPayment";
+import { useAuth } from "core/contexts";
 
 import ampas from "../../assets/images/loginBackround.jpg";
 
 function Profile() {
   const [isOpen, setIsOpen] = useState(true); // modal
+  const { userData } = useAuth();
+  console.log(userData);
 
   const openModal = () => {
     setIsOpen(true);

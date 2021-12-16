@@ -7,17 +7,17 @@ const AuthStore = () => {
   const [status, setStatus] = useState("initial"); // initial | user | guest
 
   const authMethods = {
-    authenticate: async (token) => {
-      const res = await POST_CONTINUE_SESSION(token);
+    // authenticate: async (token) => {
+    //   const res = await POST_CONTINUE_SESSION(token);
 
-      if (res.status === "OK") {
-        setUserData(res.data.body.user_data);
-        setToken(res.data.body.token);
-        setStatus("user");
-      } else {
-        setStatus("guest");
-      }
-    },
+    //   if (res.status === "OK") {
+    //     setUserData(res.data.body.user_data);
+    //     setToken(res.data.body.token);
+    //     setStatus("user");
+    //   } else {
+    //     setStatus("guest");
+    //   }
+    // },
 
     login: async (props) => {
       const res = await POST_LOGIN(props);

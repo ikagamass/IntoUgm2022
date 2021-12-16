@@ -1,11 +1,12 @@
 import React from "react";
 import UserOnlyRoute from "../../core/routeblocks/UserOnlyRoute";
+import Initial from "../../core/routeblocks/Initial";
 
 const TourDeFaculty = () => {
   return (
-    <UserOnlyRoute redirect="/login">
+    <Initial redirect="/login">
       <div>ini tour de facultty</div>
-    </UserOnlyRoute>
+    </Initial>
   );
 };
 
