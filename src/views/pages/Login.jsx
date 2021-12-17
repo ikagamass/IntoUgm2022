@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AccountLayout from "../components/AccountLayout";
 import { Link } from "react-router-dom";
 import { useAuth } from "core/contexts";
@@ -65,12 +65,17 @@ function Login() {
       password: values.pass,
     };
 
-    await authMethods.login(payload);
-    if (status === "user") {
-      // history.push("/profile");
-      console.log(userData);
-    }
+    let loginResponse = await authMethods.login(payload);
   };
+
+  useEffect(() => {
+    console.log(status);
+    if (status === "user") {
+      history.push("/profile");
+    }
+  }, [status]);
+
+  console.log("userData luar", userData);
   return (
     <AccountLayout>
       <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">

@@ -40,10 +40,14 @@ function Profile() {
               <div className="">
                 <img
                   src={ampas}
-                  width="150"
-                  height="150"
+                  // width="150"
+                  // height="150"
                   alt="Foto profile"
                   className="mx-auto mb-3 rounded-full md:w-40 sm:w-32"
+                  style={{
+                    width: "150px",
+                    height: "150px",
+                  }}
                 />
               </div>
               <button className="px-3 py-1 mx-auto text-base text-white bg-gray-500 rounded-full">
@@ -57,7 +61,7 @@ function Profile() {
                 {/* mata kuliah */}
                 <div className="flex justify-center sm:order-last">
                   <h2 className="inline px-3 py-1 text-center text-white rounded-full acakadut bg-myDarkBlue">
-                    Soshum
+                    {userData.mataUjian}
                   </h2>
                 </div>
 
@@ -81,13 +85,40 @@ function Profile() {
               </div>
 
               {/* data diri */}
-              <div className="text-base font-bold text-mygreen sm:text-lg sm:my-5">
+              {/* <div className="text-base font-bold text-mygreen sm:text-lg sm:my-5">
                 {data.map((item, i) => (
-                  <div className="flex ">
-                    <p className="w-32 sm:w-40">{item.tag}</p>
-                    <p className="">{item.value}</p>
-                  </div>
+                  
                 ))}
+              </div> */}
+
+              {/* Name */}
+              <div className="flex ">
+                <p className="w-32 sm:w-40">Name</p>
+                <p className="">{userData.nama}</p>
+              </div>
+
+              {/* asalSekolah */}
+              <div className="flex ">
+                <p className="w-32 sm:w-40">Asal Sekolah</p>
+                <p className="">{userData.asalSekolah}</p>
+              </div>
+
+              {/* Email */}
+              <div className="flex ">
+                <p className="w-32 sm:w-40">Alamat Email</p>
+                <p className="">{userData.email}</p>
+              </div>
+
+              {/* HP  */}
+              <div className="flex ">
+                <p className="w-32 sm:w-40">No. Handphone</p>
+                {/* <p className="">{item.value}</p> */}
+              </div>
+
+              {/* Wa */}
+              <div className="flex ">
+                <p className="w-32 sm:w-40">No. WhatsApp</p>
+                {/* <p className="">{item.value}</p> */}
               </div>
 
               {/* button */}
