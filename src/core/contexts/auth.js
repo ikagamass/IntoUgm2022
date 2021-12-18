@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { POST_REGISTER, POST_LOGIN, POST_CONTINUE_SESSION } from "../../api";
+import {
+  POST_REGISTER,
+  POST_LOGIN,
+  POST_CONTINUE_SESSION,
+  POST_RESTORE_SESSION,
+} from "../../api";
 
 const AuthStore = () => {
   const [userData, setUserData] = useState({});
@@ -24,8 +29,8 @@ const AuthStore = () => {
     login: async (props) => {
       const res = await POST_LOGIN(props);
 
-      console.log("Woyyy jalan diluar");
-      console.log(res);
+      // console.log("Woyyy jalan diluar");
+      // console.log(res);
 
       //success
       if (res.data.status === "OK") {
@@ -57,25 +62,42 @@ const AuthStore = () => {
       setToken("");
       setStatus("guest");
     },
+
+    restoreSession: async (props) => {
+      const res = await POST_RESTORE_SESSION(props);
+
+      console.log(res);
+
+      if (res !== undefined) {
+        if (res.data.status === "OK") {
+          setStatus("user");
+          setUserData(res.data.body.user_data);
+        } else {
+          setStatus("guest");
+        }
+      }
+    },
   };
 
   useEffect(() => {
-    console.log("Woyyy harusnya ada user data");
-    console.log(userData);
+    // console.log("Woyyy harusnya ada user data");
+    // console.log(userData);
   }, [userData]);
 
   useEffect(() => {
-    //masuk
-    // setStatus("user");
+    let token = localStorage.getItem("token");
+    console.log("Token : ", token);
+
+    authMethods.restoreSession(token);
   }, []);
 
-  // working
+  // Set token to local storage
   useEffect(() => {
-    console.log("save token");
-    console.log(token);
+    // console.log("save token");
+    // console.log(token);
     if (token) localStorage.setItem("token", token);
     else {
-      console.log("ga ada token");
+      // console.log("ga ada token");
     }
   }, [token]);
 

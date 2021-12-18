@@ -112,17 +112,25 @@ function Profile() {
               {/* HP  */}
               <div className="flex ">
                 <p className="w-32 sm:w-40">No. Handphone</p>
-                {/* <p className="">{item.value}</p> */}
+                <p className="">{userData.noHP}</p>
               </div>
 
               {/* Wa */}
               <div className="flex ">
                 <p className="w-32 sm:w-40">No. WhatsApp</p>
-                {/* <p className="">{item.value}</p> */}
+                <p className="">{userData.noWA}</p>
               </div>
 
-              {/* button */}
+              {/* button belum aktif */}
               <div className="grid sm:grid-cols-2 sm:gap-x-2">
+                <a className="w-full py-1 mt-3 text-base font-bold text-center text-white rounded-full bg-myDarkBlue">
+                  Bayar Tryout
+                </a>
+              </div>
+
+              {/* button aktif */}
+              {/* todo : entar di hide berdasarkans tatus user */}
+              <div className="hidden sm:grid-cols-2 sm:gap-x-2">
                 <a
                   className="w-full py-1 mt-3 text-base font-bold text-center text-white rounded-full"
                   style={{ backgroundColor: "#577CFF" }}

@@ -49,9 +49,25 @@ export const POST_LOGIN = ({ email, password }) => {
     });
 };
 
-export const POST_CONTINUE_SESSION = (token) => {
+// session [Nunggu Integrasi ke FE]
+export const POST_RESTORE_SESSION = (token) => {
   return intoaxios.post("/user/restore-token", token).catch((err) => {
     console.log(err.response);
     console.log(err.request);
   });
+};
+
+export const REQUEST_MIDTRANS = () => {
+  let harga = 10000;
+  return intoaxios
+    .post("/user/requestBayar", harga)
+    .then((res) => {
+      let url = res.url;
+
+      window.open(url, "_blank");
+    })
+    .catch((err) => {
+      console.log(err.response);
+      console.log(err.request);
+    });
 };

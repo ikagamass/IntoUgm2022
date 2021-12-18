@@ -3,6 +3,7 @@ import AccountLayout from "../components/AccountLayout";
 import { Link } from "react-router-dom";
 import { useAuth } from "core/contexts";
 import { useHistory } from "react-router-dom";
+import LoadingScreen from "views/components/LoadingScreen";
 
 function Login() {
   const { authMethods, status, userData } = useAuth();
@@ -17,6 +18,8 @@ function Login() {
     isValidEmail: "empty",
     isValidPass: "empty",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailChange = (newData) => {
     setValues({ ...values, email: newData });
@@ -38,6 +41,7 @@ function Login() {
   }
 
   const handleSubmit = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
 
     // validation
@@ -66,18 +70,25 @@ function Login() {
     };
 
     let loginResponse = await authMethods.login(payload);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    console.log(status);
+    // console.log(status);
     if (status === "user") {
       history.push("/profile");
     }
   }, [status]);
 
+  useEffect(() => {
+    console.log(isLoading);
+  }, [isLoading]);
+
   console.log("userData luar", userData);
+
   return (
     <AccountLayout>
+      {isLoading && <LoadingScreen />}
       <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
         Login Akun
       </h4>
