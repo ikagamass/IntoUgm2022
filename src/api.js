@@ -58,14 +58,13 @@ export const POST_RESTORE_SESSION = (token) => {
   });
 };
 
-export const REQUEST_MIDTRANS = () => {
-  let harga = 10000;
+export const POST_MIDTRANS = (payload) => {
   return intoaxios
-    .post("/user/requestBayar", harga)
+    .post("/payment", { ...payload })
     .then((res) => {
       let url = res.url;
-
       window.open(url, "_blank");
+      console.log(res);
     })
     .catch((err) => {
       console.log(err.response);

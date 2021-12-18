@@ -39,6 +39,8 @@ function App() {
           {/* Badut */}
           <Route exact path="/badut" component={badutPage} />
           <Route exact path="/badutHome" component={badutHomePage} />
+
+          <Route path="*" component={Login} />
         </Switch>
       </Router>
     </ContextProvider>

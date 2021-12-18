@@ -4,13 +4,18 @@ import TitleText from "views/components/TitleText";
 import { useLocation } from "react-router-dom";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useAuth } from "core/contexts";
+import { useHistory } from "react-router-dom";
+
+import LoadingScreen from "views/components/LoadingScreen";
 
 function ToForm() {
   const location = useLocation();
+  const history = useHistory();
   const klaster = location.pathname.split("/")[3];
 
   const [isOpen, setIsOpen] = useState(false); //
-  const { authMethods } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+  const { authMethods, status, userData } = useAuth();
 
   const openModal = () => {
     setIsOpen(true);
@@ -23,6 +28,14 @@ function ToForm() {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  // redirect to profile
+  useEffect(() => {
+    // console.log(status);
+    if (status === "user") {
+      history.push("/profile");
+    }
+  }, [status]);
 
   const [values, setValues] = useState({
     nama: "",
@@ -85,6 +98,8 @@ function ToForm() {
   }
 
   const handleSubmit = async (event) => {
+    setIsLoading(true);
+    setIsOpen(false);
     event.preventDefault();
     console.log(values);
 
@@ -161,6 +176,7 @@ function ToForm() {
     };
 
     await authMethods.register(payload);
+    setIsLoading(false);
   };
 
   const confirmModal = (
@@ -177,14 +193,14 @@ function ToForm() {
 
         <div className="flex justify-between w-full mt-7">
           <button
-            className="py-1 px-3 text-lg font-bold text-white rounded-full bg-myDarkGreen"
+            className="px-3 py-1 text-lg font-bold text-white rounded-full bg-myDarkGreen"
             onClick={closeModal}
           >
             <IoChevronBack className="inline mr-1" />
             Kembali
           </button>
           <button
-            className="py-1 px-3 text-lg font-bold text-white rounded-full bg-myDarkGreen"
+            className="px-3 py-1 text-lg font-bold text-white rounded-full bg-myDarkGreen"
             onClick={handleSubmit}
           >
             Lanjutkan
@@ -286,7 +302,7 @@ function ToForm() {
             </button>
           </div>
         </div>
-        <div className="flex-cc gap-2">
+        <div className="gap-2 flex-cc">
           <p
             className="block mt-3 text-base font-semibold text-center text-myDarkBlue"
             style={{ textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
@@ -295,7 +311,7 @@ function ToForm() {
           </p>
           <Link
             to={"/login"}
-            className="font-bold mt-3 text-base text-center text-myDarkBlue"
+            className="mt-3 text-base font-bold text-center text-myDarkBlue"
             style={{ textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           >
             Login Sekarang!
@@ -303,6 +319,7 @@ function ToForm() {
         </div>
       </div>
       <>{isOpen && confirmModal}</>
+      <>{isLoading && <LoadingScreen />}</>
     </>
   );
 }
