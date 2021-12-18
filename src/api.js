@@ -51,7 +51,8 @@ export const POST_LOGIN = ({ email, password }) => {
 
 // session [Nunggu Integrasi ke FE]
 export const POST_RESTORE_SESSION = (token) => {
-  return intoaxios.post("/user/restore-token", token).catch((err) => {
+  console.log(token);
+  return intoaxios.post("/user/restore", { token }).catch((err) => {
     console.log(err.response);
     console.log(err.request);
   });

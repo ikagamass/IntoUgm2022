@@ -12,6 +12,7 @@ const AuthStore = () => {
   const [dataUser, setdataUser] = useState("Kosong anjir");
   const [token, setToken] = useState("");
   const [status, setStatus] = useState("initial"); // initial | user | guest
+  const [isRestore, setRestore] = useState(0); // initial | user | guest
 
   const authMethods = {
     // authenticate: async (token) => {
@@ -86,7 +87,7 @@ const AuthStore = () => {
 
   useEffect(() => {
     let token = localStorage.getItem("token");
-    console.log("Token : ", token);
+    console.log("token", token);
 
     authMethods.restoreSession(token);
   }, []);

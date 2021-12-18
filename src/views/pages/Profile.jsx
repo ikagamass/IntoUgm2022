@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import AccountLayout from "../components/AccountLayout";
-import PlaceHolder from "../../assets/images/placeholder.jpg";
+import PlaceHolder from "../../assets/images/placeholder.png";
 import Wa from "../../assets/images/wa.svg";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 import UserOnlyRoute from "core/routeblocks/UserOnlyRoute";
 import WarnPayment from "views/components/modal/WarnPayment";
 import { useAuth } from "core/contexts";
-
-import ampas from "../../assets/images/loginBackround.jpg";
 
 function Profile() {
   const [isOpen, setIsOpen] = useState(true); // modal
@@ -39,7 +37,7 @@ function Profile() {
             <div className="relative justify-center hidden -my-6 -ml-4 bg-green-800 sm:flex sm:flex-col rounded-3xl sm:col-span-1">
               <div className="">
                 <img
-                  src={ampas}
+                  src={PlaceHolder}
                   // width="150"
                   // height="150"
                   alt="Foto profile"
@@ -122,10 +120,10 @@ function Profile() {
               </div>
 
               {/* button belum aktif */}
-              <div className="grid sm:grid-cols-2 sm:gap-x-2">
-                <a className="w-full py-1 mt-3 text-base font-bold text-center text-white rounded-full bg-myDarkBlue">
+              <div className="grid sm:gap-x-2">
+                <button className="w-full py-1 mt-3 text-base font-bold text-center text-white bg-blue-500 rounded-full">
                   Bayar Tryout
-                </a>
+                </button>
               </div>
 
               {/* button aktif */}
@@ -156,11 +154,3 @@ function Profile() {
 }
 
 export default Profile;
-
-const data = [
-  { tag: "Name", value: "Eula Lawrence" },
-  { tag: "Asal Sekolah", value: "Sma Mondstat Raya" },
-  { tag: "Alamat Email", value: "Eula@Lawrence.com" },
-  { tag: "No. Handphone", value: "08123456789" },
-  { tag: "No. WhatsApp", value: "08123456789" },
-];
