@@ -57,8 +57,10 @@ const AuthStore = () => {
         setStatus("guest");
       }
     },
+
     logout: () => {
-      localStorage.removeItem("token");
+      window.localStorage.removeItem("token");
+
       setUserData({});
       setToken("");
       setStatus("guest");

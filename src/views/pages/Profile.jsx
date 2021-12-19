@@ -11,10 +11,10 @@ import { POST_MIDTRANS } from "../../api";
 import LoadingScreen from "views/components/LoadingScreen";
 
 function Profile() {
+  const { authMethods, status, userData } = useAuth();
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(true); // modal
-  const { userData } = useAuth();
   console.log(userData);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -57,11 +57,10 @@ function Profile() {
     // console.log(values);
   };
 
-  const handleLogOut = () => {
-    window.localStorage.removeItem("token");
-    history.push("/login");
-
+  const handleLogOut = async () => {
     // todo : buat api call buat hapus userdata di useAuth
+    let logoutResponse = await authMethods.logout();
+    history.push("/login");
   };
 
   return (
