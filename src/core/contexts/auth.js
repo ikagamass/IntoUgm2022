@@ -34,13 +34,16 @@ const AuthStore = () => {
       console.log(res);
 
       //success
-      if (res.data.status === "OK") {
-        setToken(res.data.body.token); //working
-        setStatus("user");
 
-        setUserData(res.data.body.user_data);
-      } else {
-        setStatus("guest");
+      if (res !== undefined) {
+        if (res.data.status === "OK") {
+          setToken(res.data.body.token); //working
+          setStatus("user");
+
+          setUserData(res.data.body.user_data);
+        } else {
+          setStatus("guest");
+        }
       }
 
       return res;
@@ -49,12 +52,14 @@ const AuthStore = () => {
     register: async (props) => {
       const res = await POST_REGISTER(props);
 
-      if (res.data.status === "OK") {
-        setUserData(res.data.body.user_data);
-        setToken(res.data.body.token);
-        setStatus("user");
-      } else {
-        setStatus("guest");
+      if (res !== undefined) {
+        if (res.data.status === "OK") {
+          setUserData(res.data.body.user_data);
+          setToken(res.data.body.token);
+          setStatus("user");
+        } else {
+          setStatus("guest");
+        }
       }
     },
 
