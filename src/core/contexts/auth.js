@@ -30,8 +30,8 @@ const AuthStore = () => {
     login: async (props) => {
       const res = await POST_LOGIN(props);
 
-      // console.log("Woyyy jalan diluar");
-      // console.log(res);
+      console.log("Woyyy jalan diluar");
+      console.log(res);
 
       //success
       if (res.data.status === "OK") {
@@ -60,7 +60,6 @@ const AuthStore = () => {
 
     logout: () => {
       window.localStorage.removeItem("token");
-
       setUserData({});
       setToken("");
       setStatus("guest");

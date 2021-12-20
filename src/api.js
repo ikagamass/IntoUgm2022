@@ -49,7 +49,6 @@ export const POST_LOGIN = ({ email, password }) => {
     });
 };
 
-// session [Nunggu Integrasi ke FE]
 export const POST_RESTORE_SESSION = (token) => {
   console.log(token);
   return intoaxios.post("/user/restore", { token }).catch((err) => {
@@ -62,7 +61,8 @@ export const POST_MIDTRANS = (payload) => {
   return intoaxios
     .post("/payment", { ...payload })
     .then((res) => {
-      let url = res.url;
+      let url = res.data.transactionRedirectUrl;
+      console.log(res);
       window.open(url, "_blank");
       console.log(res);
     })
