@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "core/contexts";
 import { useHistory } from "react-router-dom";
 import LoadingScreen from "views/components/LoadingScreen";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 
 function Login() {
   const { authMethods, status, userData } = useAuth();
@@ -19,7 +20,14 @@ function Login() {
     isValidPass: "empty",
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); //Loading
+  const [isError, setIsError] = useState(false); // Modal Error
+  const [errorMessage, setErrorMessage] = useState(null); // Error Message
+
+  // Close Modal Error
+  const closeModalError = () => {
+    setIsError(false);
+  };
 
   const handleEmailChange = (newData) => {
     setValues({ ...values, email: newData });
@@ -69,9 +77,15 @@ function Login() {
       password: values.pass,
     };
 
-    let loginResponse = await authMethods.login(payload);
-    console.log("loginResponse: ", loginResponse);
+    const login = await authMethods.login(payload);
+    console.log("login: ", login);
     setIsLoading(false);
+
+    if (login.status !== 200) {
+      console.log("Error anjir", login.data.code);
+      setIsError(true);
+      setErrorMessage(login.data.code);
+    }
   };
 
   useEffect(() => {
@@ -87,9 +101,44 @@ function Login() {
 
   console.log("userData luar", userData);
 
+  // Error Modal
+  const errorModal = (
+    <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80">
+      {/* modal */}
+      <div
+        className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
+        style={{ width: "610px" }}
+      >
+        <p className="font-bold text-center text-mygreen">
+          {errorMessage === "user-data-not-found"
+            ? "Pengguna tidak ditemukan"
+            : errorMessage === "incorrect-password"
+            ? "Password salah"
+            : ""}
+        </p>
+        <p className="font-bold text-center text-mygreen">
+          Periksa kembali{" "}
+          {errorMessage === "user-data-not-found" ? "email dan" : ""}
+          email dan password anda
+        </p>
+
+        <div className="flex justify-center w-full mt-7">
+          <button
+            className="px-3 py-1 text-lg font-bold text-white rounded-full bg-myDarkGreen"
+            onClick={closeModalError}
+          >
+            <IoChevronBack className="inline mr-1" />
+            Kembali
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <AccountLayout>
       {isLoading && <LoadingScreen />}
+      <>{isError && errorModal}</>
       <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
         Login Akun
       </h4>

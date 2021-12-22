@@ -55,7 +55,7 @@ export const POST_LOGIN = ({ email, password }) => {
       return err.response;
     });
 
-  console.log(ayam);
+  // console.log(ayam);
   return ayam;
 };
 

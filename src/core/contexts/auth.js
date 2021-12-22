@@ -8,7 +8,6 @@ import {
 
 const AuthStore = () => {
   const [userData, setUserData] = useState({});
-  const [errorMessage, seterrorMessage] = useState(null);
   const [token, setToken] = useState("");
   const [status, setStatus] = useState("initial"); // initial | user | guest
   const [isRestore, setRestore] = useState(0); // initial | user | guest
@@ -29,20 +28,19 @@ const AuthStore = () => {
     login: async (props) => {
       const res = await POST_LOGIN(props);
 
-      console.log("Woyyy jalan diluar");
+      // console.log("Woyyy jalan diluar");
       console.log(res);
 
       //success
 
-      if (res.status === 200) {
-        if (res.data.status === "OK") {
-          setToken(res.data.body.token); //working
-          setStatus("user");
+      if (res.data.status === "OK") {
+        setToken(res.data.body.token); //working
+        setStatus("user");
 
-          setUserData(res.data.body.user_data);
-        } else {
-          setStatus("guest");
-        }
+        setUserData(res.data.body.user_data);
+      } else {
+        setStatus("guest");
+        console.log("Auth Not OK :", res.data.message);
       }
 
       return res;
@@ -54,7 +52,7 @@ const AuthStore = () => {
       console.log(res);
 
       if (res.data.status === "OK") {
-        console.log("auth set : ", "user");
+        // console.log("auth set : ", "user");
 
         setUserData(res.data.body.user_data);
         setToken(res.data.body.token);
@@ -63,7 +61,6 @@ const AuthStore = () => {
         setStatus("guest");
 
         console.log("Auth Not OK :", res.data.message);
-        seterrorMessage(res.data.message);
       }
 
       return res;
@@ -115,11 +112,6 @@ const AuthStore = () => {
   }, [token]);
 
   console.log("stussss", status);
-
-  // Cek error
-  useEffect(() => {
-    console.log("auth error :", errorMessage);
-  }, [errorMessage]);
 
   return {
     status,
