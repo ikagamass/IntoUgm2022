@@ -8,8 +8,7 @@ import {
 
 const AuthStore = () => {
   const [userData, setUserData] = useState({});
-
-  const [dataUser, setdataUser] = useState("Kosong anjir");
+  const [errorMessage, seterrorMessage] = useState(null);
   const [token, setToken] = useState("");
   const [status, setStatus] = useState("initial"); // initial | user | guest
   const [isRestore, setRestore] = useState(0); // initial | user | guest
@@ -35,7 +34,7 @@ const AuthStore = () => {
 
       //success
 
-      if (res !== undefined) {
+      if (res.status === 200) {
         if (res.data.status === "OK") {
           setToken(res.data.body.token); //working
           setStatus("user");
@@ -52,15 +51,22 @@ const AuthStore = () => {
     register: async (props) => {
       const res = await POST_REGISTER(props);
 
-      if (res !== undefined) {
-        if (res.data.status === "OK") {
-          setUserData(res.data.body.user_data);
-          setToken(res.data.body.token);
-          setStatus("user");
-        } else {
-          setStatus("guest");
-        }
+      console.log(res);
+
+      if (res.data.status === "OK") {
+        console.log("auth set : ", "user");
+
+        setUserData(res.data.body.user_data);
+        setToken(res.data.body.token);
+        setStatus("user");
+      } else {
+        setStatus("guest");
+
+        console.log("Auth Not OK :", res.data.message);
+        seterrorMessage(res.data.message);
       }
+
+      return res;
     },
 
     logout: () => {
@@ -109,6 +115,11 @@ const AuthStore = () => {
   }, [token]);
 
   console.log("stussss", status);
+
+  // Cek error
+  useEffect(() => {
+    console.log("auth error :", errorMessage);
+  }, [errorMessage]);
 
   return {
     status,

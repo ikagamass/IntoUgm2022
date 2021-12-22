@@ -13,9 +13,12 @@ function ToForm() {
   const history = useHistory();
   const klaster = location.pathname.split("/")[3];
 
-  const [isOpen, setIsOpen] = useState(false); //
-  const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); //Modal Succes
+  const [isLoading, setIsLoading] = useState(false); //Loadin Screen
   const { authMethods, status, userData } = useAuth();
+
+  const [isError, setIsError] = useState(false); // Modal Error
+  const [errorMessage, setErrorMessage] = useState(null); // Error Message
 
   const openModal = () => {
     setIsOpen(true);
@@ -25,8 +28,14 @@ function ToForm() {
     console.log(isOpen);
   }, [isOpen]);
 
+  // Close Modal Confirmation
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  // Close Modal Error
+  const closeModalError = () => {
+    setIsError(false);
   };
 
   // redirect to profile
@@ -175,9 +184,21 @@ function ToForm() {
       mataUjian: klaster,
     };
 
-    await authMethods.register(payload);
+    const daftar = await authMethods.register(payload);
+    console.log(daftar);
+
     setIsLoading(false);
+    if (daftar.status !== 200) {
+      console.log("Error anjir", daftar.data.message);
+      setIsError(true);
+      setErrorMessage(daftar.data.message);
+    }
   };
+
+  // Modal Cek is Error
+  useEffect(() => {
+    console.log(isError);
+  }, [isError]);
 
   const confirmModal = (
     <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80">
@@ -205,6 +226,33 @@ function ToForm() {
           >
             Lanjutkan
             <IoChevronForward className="inline mr-1" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  const errorModal = (
+    <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80">
+      {/* modal */}
+      <div
+        className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
+        style={{ width: "610px" }}
+      >
+        <p className="font-bold text-center text-mygreen">Terjadi Error</p>
+        <p className="font-bold text-center text-mygreen">
+          {errorMessage === "email-already-used"
+            ? "Email sudah digunakan"
+            : errorMessage}
+        </p>
+
+        <div className="flex justify-center w-full mt-7">
+          <button
+            className="px-3 py-1 text-lg font-bold text-white rounded-full bg-myDarkGreen"
+            onClick={closeModalError}
+          >
+            <IoChevronBack className="inline mr-1" />
+            Kembali
           </button>
         </div>
       </div>
@@ -320,6 +368,7 @@ function ToForm() {
       </div>
       <>{isOpen && confirmModal}</>
       <>{isLoading && <LoadingScreen />}</>
+      <>{isError && errorModal}</>
     </>
   );
 }

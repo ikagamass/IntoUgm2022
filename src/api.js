@@ -21,7 +21,7 @@ export const POST_REGISTER = ({
   password,
   mataUjian,
 }) => {
-  return intoaxios
+  const ayam = intoaxios
     .post("/user/register", {
       nama,
       asalSekolah,
@@ -34,11 +34,16 @@ export const POST_REGISTER = ({
     .catch((err) => {
       console.log(err.response);
       console.log(err.request);
+
+      return err.response;
     });
+
+  // console.log(ayam);
+  return ayam;
 };
 
 export const POST_LOGIN = ({ email, password }) => {
-  return intoaxios
+  const ayam = intoaxios
     .post("/user/login", {
       email,
       password,
@@ -46,7 +51,12 @@ export const POST_LOGIN = ({ email, password }) => {
     .catch((err) => {
       console.log(err.response);
       console.log(err.request);
+
+      return err.response;
     });
+
+  console.log(ayam);
+  return ayam;
 };
 
 export const POST_RESTORE_SESSION = (token) => {

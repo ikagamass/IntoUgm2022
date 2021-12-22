@@ -70,6 +70,7 @@ function Login() {
     };
 
     let loginResponse = await authMethods.login(payload);
+    console.log("loginResponse: ", loginResponse);
     setIsLoading(false);
   };
 
