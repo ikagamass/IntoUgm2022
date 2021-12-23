@@ -135,7 +135,7 @@ function Login() {
         className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
         style={{ width: "610px" }}
       >
-        <p className="font-bold text-center text-mygreen">{errorMessageUI()}</p>
+        {errorMessageUI()}
 
         <div className="flex justify-center w-full mt-7">
           <button

@@ -6,12 +6,23 @@ import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useAuth } from "core/contexts";
 import { useHistory } from "react-router-dom";
 
+import useForm from "../../core/hooks/useForm";
 import LoadingScreen from "views/components/LoadingScreen";
 
 function ToForm() {
   const location = useLocation();
   const history = useHistory();
   const klaster = location.pathname.split("/")[3];
+
+  const { form, mutateForm, resetForm } = useForm({
+    name: "",
+    school: "",
+    email: "",
+    noHp: "",
+    noWa: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const [isOpen, setIsOpen] = useState(false); //Modal Succes
   const [isLoading, setIsLoading] = useState(false); //Loadin Screen
@@ -46,48 +57,6 @@ function ToForm() {
     }
   }, [status]);
 
-  const [values, setValues] = useState({
-    nama: "",
-    sekolah: "",
-    email: "",
-    noHp: "",
-    noWa: "",
-    pass: "",
-    conPass: "",
-  });
-
-  const [isValid, setValid] = useState({
-    isValidNama: "empty",
-    isValidSekolah: "empty",
-    isValidEmail: "empty",
-    isValidNoHp: "empty",
-    isValidNoWa: "empty",
-    isValidPass: "empty",
-    isValidConPass: "empty",
-  });
-
-  const handleNamaChange = (newData) => {
-    setValues({ ...values, nama: newData });
-  };
-  const handleSekolahChange = (newData) => {
-    setValues({ ...values, sekolah: newData });
-  };
-  const handleEmailChange = (newData) => {
-    setValues({ ...values, email: newData });
-  };
-  const handleNoHPChange = (newData) => {
-    setValues({ ...values, noHp: newData });
-  };
-  const handleNoWAChange = (newData) => {
-    setValues({ ...values, noWa: newData });
-  };
-  const handlePassChange = (newData) => {
-    setValues({ ...values, pass: newData });
-  };
-  const handleConPassChange = (newData) => {
-    setValues({ ...values, conPass: newData });
-  };
-
   function validateEmail(email) {
     const re =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -106,82 +75,114 @@ function ToForm() {
     return re.test(input_str);
   }
 
+  const validateAll = () => {
+    if (form.name === "") {
+      // Empty Name
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("empty-name");
+      return false;
+    } else if (form.school === "") {
+      // Empty School
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("empty-school");
+      return false;
+    } else if (form.email === "") {
+      // Empty Email
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("empty-email");
+      return false;
+    } else if (!validateEmail(form.email)) {
+      // Incorrect Email
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("incorrect-email");
+      return false;
+    } else if (form.noHp === "") {
+      // Empty Phone
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("empty-phone");
+      return false;
+    } else if (!validatePhoneNumber(form.noHp)) {
+      // Inccorect Phone
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("incorrect-phone");
+      return false;
+    } else if (form.noWa === "") {
+      // Empty WA
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("empty-whatsapp");
+      return false;
+    } else if (!validatePhoneNumber(form.noWa)) {
+      // Inccorect WA
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("incorrect-whatsapp");
+      return false;
+    } else if (form.password === "") {
+      // Empty password
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("empty-password");
+      return false;
+    } else if (!validatePassword(form.password)) {
+      // Incorrect Password
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("incorrect-password");
+      return false;
+    } else if (form.confirmPassword === "") {
+      // Empty Confirmpassword
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("empty-confirmPassword");
+      return false;
+    } else if (!validatePassword(form.confirmPassword)) {
+      // Incorrect ConfirmPassword
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("incorrect-confirmPassword");
+      return false;
+    } else if (form.password !== form.confirmPassword) {
+      // Password gak sama
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage("password-notMatch");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (event) => {
     setIsLoading(true);
     setIsOpen(false);
     event.preventDefault();
-    console.log(values);
+    console.log(form);
 
     // validation
-
-    // nama
-    if (values.nama === "") {
-      setValid({ ...isValid, isValidNama: "empty" });
-    } else {
-      console.log("namanya benar woyyy");
-      setValid({ ...isValid, isValidNama: "true" });
+    const isValid = validateAll();
+    if (!isValid) {
+      return;
     }
 
-    // sekolah
-    if (values.sekolah === "") {
-      setValid({ ...isValid, isValidSekolah: "empty" });
-    } else {
-      setValid({ ...isValid, isValidSekolah: "true" });
-    }
-
-    // email
-    if (values.email === "") {
-      setValid({ ...isValid, isValidEmail: "empty" });
-    } else if (validateEmail(values.email)) {
-      setValid({ ...isValid, isValidEmail: "true" });
-    } else {
-      setValid({ ...isValid, isValidEmail: "false" });
-    }
-
-    // hp
-    if (values.noHp === "") {
-      setValid({ ...isValid, isValidNoHp: "empty" });
-    } else if (validatePhoneNumber(values.email)) {
-      setValid({ ...isValid, isValidNoHp: "true" });
-    } else {
-      setValid({ ...isValid, isValidNoHp: "false" });
-    }
-
-    // wa
-    if (values.noWa === "") {
-      setValid({ ...isValid, isValidNoWa: "empty" });
-    } else if (validatePhoneNumber(values.email)) {
-      setValid({ ...isValid, isValidNoWa: "true" });
-    } else {
-      setValid({ ...isValid, isValidNoWa: "false" });
-    }
-
-    // password
-    if (values.pass === "") {
-      setValid({ ...isValid, isValidPass: "empty" });
-    } else if (validatePassword(values.pass)) {
-      setValid({ ...isValid, isValidPass: "true" });
-    } else {
-      setValid({ ...isValid, isValidPass: "false" });
-    }
-
-    // password confirmation
-    if (values.conPass === "") {
-      setValid({ ...isValid, isValidConPass: "empty" });
-    } else if (values.conPass === values.pass) {
-      setValid({ ...isValid, isValidConPass: "true" });
-    } else {
-      setValid({ ...isValid, isValidConPass: "false" });
-    }
+    // console.log(form.nama);
+    // console.log(form.asalSekolah);
 
     const payload = {
-      nama: values.nama,
-      asalSekolah: values.sekolah,
-      email: values.email,
-      noHP: values.noHp,
-      noWA: values.noWa,
-      password: values.pass,
+      nama: form.name,
+      asalSekolah: form.school,
+      email: form.email,
+      noHP: form.noHp,
+      noWA: form.noWa,
+      password: form.pass,
       mataUjian: klaster,
+      password: form.password,
     };
 
     const daftar = await authMethods.register(payload);
@@ -189,7 +190,7 @@ function ToForm() {
 
     setIsLoading(false);
     if (daftar.status !== 200) {
-      console.log("Error anjir", daftar.data.message);
+      // console.log("Error anjir", daftar.data.message);
       setIsError(true);
       setErrorMessage(daftar.data.message);
     }
@@ -232,6 +233,194 @@ function ToForm() {
     </div>
   );
 
+  const errorMessageUI = () => {
+    switch (errorMessage) {
+      case "empty-name": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">Nama kosong</p>
+            <p className="font-bold text-center text-mygreen">
+              Mohon tuliskan nama anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "empty-school": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Asal sekolah kosong
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Mohon tuliskan asal sekolah anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "empty-email": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">Email kosong</p>
+            <p className="font-bold text-center text-mygreen">
+              Mohon tuliskan email anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "incorrect-email": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">Email salah</p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali email anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "empty-phone": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              No handphone kosong
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Mohon tuliskan nomor handphone anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "incorrect-phone": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Nomor handphone salah
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali nomor handphone anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "empty-whatsapp": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              No whatsapp kosong
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Mohon tuliskan nomor whatsapp anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "incorrect-whatsapp": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Nomor whatsapp salah
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali nomor whatsapp anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "empty-password": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              password kosong
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Mohon tuliskan password anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "incorrect-password": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">Password salah</p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali password anda, pastikan password tediri dari
+              minimal 8 karakter kombinasi angka dan huruf
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "empty-confirmPassword": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Konfirmasi password kosong
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Mohon tuliskan konfirmasi password anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "incorrect-confirmPassword": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Konfirmasi Password salah
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali konfirmasi password anda, pastikan password tediri
+              dari minimal 8 karakter kombinasi angka dan huruf
+            </p>
+          </>
+        );
+        break;
+      }
+
+      case "password-notMatch": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Password dan Konfirmasi password tidak sama
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali password dan Konfirmasi password anda
+            </p>
+          </>
+        );
+        break;
+      }
+
+      default:
+        return (
+          <p className="font-bold text-center text-mygreen">
+            Terjadi error : {errorMessage}
+          </p>
+        );
+        break;
+    }
+  };
+
   const errorModal = (
     <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80">
       {/* modal */}
@@ -239,12 +428,7 @@ function ToForm() {
         className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
         style={{ width: "610px" }}
       >
-        <p className="font-bold text-center text-mygreen">Terjadi Error</p>
-        <p className="font-bold text-center text-mygreen">
-          {errorMessage === "email-already-used"
-            ? "Email sudah digunakan"
-            : errorMessage}
-        </p>
+        {errorMessageUI()}
 
         <div className="flex justify-center w-full mt-7">
           <button
@@ -269,77 +453,85 @@ function ToForm() {
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Nama</label>
             <input
+              name="name"
               type="text"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handleNamaChange(e.target.value)}
-              value={values.nama}
+              onChange={mutateForm}
+              value={form.name}
             />
           </div>
 
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Asal Sekolah</label>
             <input
+              name="school"
               type="text"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handleSekolahChange(e.target.value)}
-              value={values.sekolah}
+              onChange={mutateForm}
+              value={form.school}
             />
           </div>
 
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Almat E-Mail</label>
             <input
+              name="email"
               type="text"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handleEmailChange(e.target.value)}
-              value={values.email}
+              onChange={mutateForm}
+              value={form.email}
             />
           </div>
 
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">No. Handphone</label>
             <input
+              name="noHp"
               type="text"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handleNoHPChange(e.target.value)}
-              value={values.noHp}
+              onChange={mutateForm}
+              value={form.noHp}
             />
           </div>
 
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">No. WhatsApp</label>
             <input
+              name="noWa"
               type="text"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handleNoWAChange(e.target.value)}
-              value={values.noWa}
+              onChange={mutateForm}
+              value={form.noWa}
             />
           </div>
 
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Password Akun</label>
             <input
+              name="password"
               type="password"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handlePassChange(e.target.value)}
-              value={values.pass}
+              onChange={mutateForm}
+              value={form.password}
             />
           </div>
 
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Konfirmasi</label>
             <input
+              name="confirmPassword"
               type="password"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handleConPassChange(e.target.value)}
-              value={values.conPass}
+              onChange={mutateForm}
+              value={form.confirmPassword}
             />
           </div>
 
           {/* daftar dan password note */}
           <div className="flex flex-col sm:flex-row sm:mt-3">
             <p className="mt-3 font-semibold text-center text-myDarkBlue textNormal">
-              Password harus berupa kombinasi angka dan huruf
+              Password harus berupa kombinasi angka dan huruf dan minimal 8
+              karakter
             </p>
 
             <button
