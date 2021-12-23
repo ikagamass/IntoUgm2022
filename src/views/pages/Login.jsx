@@ -6,18 +6,15 @@ import { useHistory } from "react-router-dom";
 import LoadingScreen from "views/components/LoadingScreen";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 
+import useForm from "../../core/hooks/useForm";
+
 function Login() {
   const { authMethods, status, userData } = useAuth();
   const history = useHistory();
 
-  const [values, setValues] = useState({
+  const { form, mutateForm, resetForm } = useForm({
     email: "",
-    pass: "",
-  });
-
-  const [isValid, setValid] = useState({
-    isValidEmail: "empty",
-    isValidPass: "empty",
+    password: "",
   });
 
   const [isLoading, setIsLoading] = useState(false); //Loading
@@ -29,23 +26,16 @@ function Login() {
     setIsError(false);
   };
 
-  const handleEmailChange = (newData) => {
-    setValues({ ...values, email: newData });
-  };
-  const handlePassChange = (newData) => {
-    setValues({ ...values, pass: newData });
-  };
-
-  function validateEmail(email) {
+  function validateEmail(input) {
     const re =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
+    return re.test(input);
   }
 
-  function validatePassword(input_str) {
+  function validatePassword(input) {
     var re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/im;
 
-    return re.test(input_str);
+    return re.test(input);
   }
 
   const handleSubmit = async (event) => {
@@ -53,28 +43,17 @@ function Login() {
     event.preventDefault();
 
     // validation
-
-    // email
-    if (values.email === "") {
-      setValid({ ...isValid, isValidEmail: "empty" });
-    } else if (validateEmail(values.email)) {
-      setValid({ ...isValid, isValidEmail: "true" });
-    } else {
-      setValid({ ...isValid, isValidEmail: "false" });
-    }
-
-    // password
-    if (values.pass === "") {
-      setValid({ ...isValid, isValidPass: "empty" });
-    } else if (validatePassword(values.pass)) {
-      setValid({ ...isValid, isValidPass: "true" });
-    } else {
-      setValid({ ...isValid, isValidPass: "false" });
+    const emailTest = validateEmail(form.email);
+    if (!emailTest) {
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMessage(`incorrect-email`);
+      return;
     }
 
     const payload = {
-      email: values.email,
-      password: values.pass,
+      email: form.email,
+      password: form.password,
     };
 
     const login = await authMethods.login(payload);
@@ -101,6 +80,53 @@ function Login() {
 
   console.log("userData luar", userData);
 
+  const errorMessageUI = () => {
+    switch (errorMessage) {
+      case "user-data-not-found": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Pengguna tidak ditemukan
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali email dan password anda
+            </p>
+          </>
+        );
+        break;
+      }
+      case "incorrect-password": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">Password Salah</p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali password anda
+            </p>
+          </>
+        );
+        break;
+      }
+      case "incorrect-email": {
+        return (
+          <>
+            <p className="font-bold text-center text-mygreen">
+              Email yang kamu masukkan salah
+            </p>
+            <p className="font-bold text-center text-mygreen">
+              Periksa kembali email anda
+            </p>
+          </>
+        );
+        break;
+      }
+      default:
+        return (
+          <p className="font-bold text-center text-mygreen">{errorMessage}</p>
+        );
+        break;
+    }
+  };
+
   // Error Modal
   const errorModal = (
     <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80">
@@ -109,18 +135,7 @@ function Login() {
         className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
         style={{ width: "610px" }}
       >
-        <p className="font-bold text-center text-mygreen">
-          {errorMessage === "user-data-not-found"
-            ? "Pengguna tidak ditemukan"
-            : errorMessage === "incorrect-password"
-            ? "Password salah"
-            : ""}
-        </p>
-        <p className="font-bold text-center text-mygreen">
-          Periksa kembali{" "}
-          {errorMessage === "user-data-not-found" ? "email dan" : ""}
-          email dan password anda
-        </p>
+        {errorMessageUI()}
 
         <div className="flex justify-center w-full mt-7">
           <button
@@ -149,10 +164,12 @@ function Login() {
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Alamat E-Mail</label>
             <input
+              name="email"
               type="text"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handleEmailChange(e.target.value)}
-              value={values.email}
+              onChange={mutateForm}
+              value={form.email}
+              placeholder="Masukkan Email"
             />
           </div>
 
@@ -161,8 +178,9 @@ function Login() {
             <input
               type="password"
               className="w-full px-3 py-1 text-base rounded-full myInput"
-              onChange={(e) => handlePassChange(e.target.value)}
-              value={values.pass}
+              name="password"
+              onChange={mutateForm}
+              value={form.password}
             />
           </div>
 
