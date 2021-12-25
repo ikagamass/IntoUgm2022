@@ -39,7 +39,7 @@ function Profile() {
     const payload = {
       idUser: userData._id,
       mataUjian: userData.mataUjian,
-      price: 10000,
+      price: 20000,
       item_details: {
         id: "saintek",
         price: 10000,
