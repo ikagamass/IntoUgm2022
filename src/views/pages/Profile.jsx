@@ -42,7 +42,7 @@ function Profile() {
       price: 20000,
       item_details: {
         id: "saintek",
-        price: 10000,
+        price: 20000,
         quantity: 1,
         name: `Pendaftaran Tryout ${userData.mataUjian} Into UGM 2022`,
         brand: "",
