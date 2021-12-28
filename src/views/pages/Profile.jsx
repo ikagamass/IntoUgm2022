@@ -14,7 +14,7 @@ function Profile() {
   const { authMethods, status, userData } = useAuth();
   const history = useHistory();
 
-  const [isOpen, setIsOpen] = useState(true); // modal
+  const [isOpen, setIsOpen] = useState(!userData.status); // modal
   console.log(userData);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +34,7 @@ function Profile() {
   const handlePayment = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    // setIsOpen(false);
+    setIsOpen(false);
 
     const payload = {
       idUser: userData._id,
@@ -66,7 +66,9 @@ function Profile() {
   return (
     <UserOnlyRoute>
       <AccountLayout>
-        {isOpen && <WarnPayment closeModal={closeModal} />}
+        {isOpen && (
+          <WarnPayment closeModal={closeModal} handlePayment={handlePayment} />
+        )}
         <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
           Akun
         </h4>
@@ -121,7 +123,7 @@ function Profile() {
                   {userData.status === false ? (
                     <span className="font-bold text-red-500">Tidak Aktif</span>
                   ) : (
-                    <span className="font-bold text-red-500"> Aktif</span>
+                    <span className="font-bold text-green-500"> Aktif</span>
                   )}
                 </p>
               </div>
