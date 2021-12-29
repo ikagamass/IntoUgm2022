@@ -18,7 +18,7 @@ function ToKluster() {
             >
               {/* <p className="text-sm text-left myGreen md:text-lg">{item.teks1}</p> */}
               <p className="mt-3 text-sm font-bold text-right sm:mt-auto myGreen md:text-xl">
-                {item.teks2} >
+                {item.teks2}
               </p>
             </Link>
           ))}
@@ -48,9 +48,9 @@ const button = [
     teks2: "Soshum",
     tujuan: "/try-out/daftar/soshum",
   },
-  {
-    teks1: "Kebingungan Cara Akses Try Out?",
-    teks2: "Khusus",
-    tujuan: "/try-out/daftar/campuran",
-  },
+  // {
+  //   teks1: "Kebingungan Cara Akses Try Out?",
+  //   teks2: "Khusus",
+  //   tujuan: "/try-out/daftar/campuran",
+  // },
 ];
