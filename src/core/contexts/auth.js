@@ -29,7 +29,7 @@ const AuthStore = () => {
       const res = await POST_LOGIN(props);
 
       // console.log("Woyyy jalan diluar");
-      console.log(res);
+      // console.log(res);
 
       //success
 
@@ -40,7 +40,7 @@ const AuthStore = () => {
         setUserData(res.data.body.user_data);
       } else {
         setStatus("guest");
-        console.log("Auth Not OK :", res.data.message);
+        // console.log("Auth Not OK :", res.data.message);
       }
 
       return res;
@@ -49,7 +49,7 @@ const AuthStore = () => {
     register: async (props) => {
       const res = await POST_REGISTER(props);
 
-      console.log(res);
+      // console.log(res);
 
       if (res.data.status === "OK") {
         // console.log("auth set : ", "user");
@@ -60,7 +60,7 @@ const AuthStore = () => {
       } else {
         setStatus("guest");
 
-        console.log("Auth Not OK :", res.data.message);
+        // console.log("Auth Not OK :", res.data.message);
       }
 
       return res;
@@ -76,7 +76,7 @@ const AuthStore = () => {
     restoreSession: async (props) => {
       const res = await POST_RESTORE_SESSION(props);
 
-      console.log(res);
+      // console.log(res);
 
       if (res !== undefined) {
         if (res.data.status === "OK") {
@@ -111,7 +111,7 @@ const AuthStore = () => {
     }
   }, [token]);
 
-  console.log("stussss", status);
+  // console.log("stussss", status);
 
   return {
     status,

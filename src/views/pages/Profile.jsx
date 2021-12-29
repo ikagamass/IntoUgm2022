@@ -14,15 +14,16 @@ function Profile() {
   const { authMethods, status, userData } = useAuth();
   const history = useHistory();
 
-  const [isOpen, setIsOpen] = useState(!userData.status); // modal
-  console.log(userData);
+  const [isOpen, setIsOpen] = useState(true); // modal
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
+  useEffect(() => {
+    if (userData?.status || false) {
+      console.log(userData);
+      setIsOpen(!userData.status);
+    }
+  });
   useEffect(() => {
     console.log(isOpen);
   }, [isOpen]);
@@ -63,11 +64,17 @@ function Profile() {
     history.push("/login");
   };
 
+  const toWhatsapp = () => {
+    window.open("https://linktr.ee/ikagamass_ugm");
+  };
+
   return (
     <UserOnlyRoute>
       <AccountLayout>
-        {isOpen && (
+        {isOpen === true ? (
           <WarnPayment closeModal={closeModal} handlePayment={handlePayment} />
+        ) : (
+          ""
         )}
         <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
           Akun
@@ -158,7 +165,7 @@ function Profile() {
                 <p className="">{userData.noWA}</p>
               </div>
 
-              {userData.status === false ? (
+              {!userData.status ? (
                 <div className="flex items-baseline align-baseline gap-x-4">
                   {/* button belum aktif */}
                   <button
@@ -172,23 +179,24 @@ function Profile() {
                   </p>
                 </div>
               ) : (
-                <div className="hidden sm:grid-cols-2 sm:gap-x-2">
+                <div className="sm:grid sm:grid-cols-2 sm:gap-x-2">
                   {/* button sudah aktif */}
-                  <a
+                  <button
                     className="w-full py-1 mt-3 text-base font-bold text-center text-white rounded-full"
                     style={{ backgroundColor: "#577CFF" }}
                   >
                     Akses Akun Pahamify
-                  </a>
+                  </button>
 
-                  <a
+                  <button
                     className="w-full py-1 mt-3 text-base font-bold text-center text-white rounded-full "
                     style={{ backgroundColor: "#25D366" }}
+                    onClick={toWhatsapp}
                   >
                     <AiOutlineWhatsApp className="inline-block mb-1 mr-1 sm:hidden md:inline-block" />
                     {/* <img src={Wa} className="inline-block w-6 h-6" /> */}
                     Grup WA InTO UGM 2022
-                  </a>
+                  </button>
                 </div>
               )}
 
