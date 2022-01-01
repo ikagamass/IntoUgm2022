@@ -3,11 +3,11 @@ import React from "react";
 function DesktopHome() {
   return (
     <section
-      className="hidden w-screen h-screen lg:flex"
+      className="hidden w-screen min-h-screen overflow-hidden lg:flex"
       id="Sectioondesktop"
       style={{ backgroundImage: "url('/images/bgHomeFull.jpg')" }}
     >
-      <div id="AssetContainer" className="mx-auto my-auto">
+      <div id="AssetContainer" className="mx-auto my-auto ">
         {/* Into / Into */}
         <button id="Into">
           <img src="/images/menuDesktop/Into.png" alt="" />
