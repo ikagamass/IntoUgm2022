@@ -27,7 +27,62 @@
   display: none;
 }
 
+@media only screen and (min-width: 1024px) {
+  #AssetContainerSmall {
+    /* border: 5px solid #000000; */
+    width: 1024px;
+    height: 576px;
+
+    position: relative;
+    display: block;
+  }
+
+  #Into {
+    position: absolute;
+    left: 196px;
+    top: 134px;
+
+    display: block;
+  }
+
+  #Ampera {
+    position: absolute;
+    bottom: 40px;
+    left: -144px;
+
+    display: block;
+  }
+
+  #Monpera {
+    position: absolute;
+    bottom: -20px;
+    left: 396px;
+
+    display: block;
+  }
+
+  #LRT {
+    position: absolute;
+    bottom: 110px;
+    right: -120px;
+
+    display: block;
+  }
+
+  #TV {
+    position: absolute;
+    top: 80px;
+    right: 25px;
+
+    display: block;
+  }
+}
+
 @media only screen and (min-width: 1280px) {
+  #AssetContainerSmall {
+    display: none;
+  }
+
   #AssetContainer {
     /* border: 5px solid #000000; */
     width: 1280px;
