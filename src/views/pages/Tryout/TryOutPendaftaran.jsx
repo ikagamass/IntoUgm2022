@@ -1,5 +1,5 @@
-import TryOutLayout from "../components/TryoutLayout";
-import ToForm from "../parts/ToForm";
+import TryOutLayout from "../../components/TryoutLayout";
+import ToForm from "./ToForm";
 import React from "react";
 import { useParams } from "react-router-dom";
 

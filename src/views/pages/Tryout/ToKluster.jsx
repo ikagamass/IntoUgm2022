@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TitleText from "views/components/TitleText";
+import Saintek from "assets/images/Saintek.png";
+import Soshum from "assets/images/Soshum.png";
 
 function ToKluster() {
   return (
@@ -14,10 +16,15 @@ function ToKluster() {
           {button.map((item, idx) => (
             <Link
               to={item.tujuan}
-              className="flex flex-col justify-end flex-grow h-20 px-3 pt-4 pb-2 yellowButton rounded-xl sm:max-w-md md:h-72 sm:h-44"
+              className="flex flex-col justify-end flex-grow h-20 pt-4 overflow-hidden bgButtonKluster rounded-xl sm:max-w-md md:h-72 sm:h-44"
             >
+              <img
+                src={item.gambar}
+                className="hidden mx-auto md:w-72 sm:w-52 sm:block"
+              />
+
               {/* <p className="text-sm text-left myGreen md:text-lg">{item.teks1}</p> */}
-              <p className="mt-3 text-sm font-bold text-right sm:mt-auto myGreen md:text-xl">
+              <p className="px-3 py-2 mt-3 text-sm font-bold text-right klusterText sm:mt-auto myGreen md:text-xl">
                 {item.teks2}
               </p>
             </Link>
@@ -42,11 +49,13 @@ const button = [
     teks1: "Belum pernah mendaftar Try Out?",
     teks2: "Saintek",
     tujuan: "/try-out/daftar/saintek",
+    gambar: Saintek,
   },
   {
     teks1: "Sudah pernah mendaftar Try Out??",
     teks2: "Soshum",
     tujuan: "/try-out/daftar/soshum",
+    gambar: Soshum,
   },
   // {
   //   teks1: "Kebingungan Cara Akses Try Out?",

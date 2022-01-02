@@ -13,7 +13,7 @@ function DesktopHome() {
       }
 
       case "Tryout": {
-        // alert("TO");
+        alert("TO");
         history.push("/try-out");
         break;
       }

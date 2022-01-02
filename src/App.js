@@ -1,12 +1,12 @@
-import TryOutKlaster from "views/pages/TryOutKlaster";
-import TryOutPendaftaran from "views/pages/TryOutPendaftaran";
+import TryOutKlaster from "views/pages/Tryout/TryOutKlaster";
+import TryOutPendaftaran from "views/pages/Tryout/TryOutPendaftaran";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ContextProvider from "./core/contexts";
 
 import Home from "./views/pages/Home";
 import Live from "./views/pages/Live/Live";
 import TourDeFaculty from "./views/pages/TourDeFaculty";
-import TryOut from "./views/pages/TryOut.jsx";
+import TryOut from "./views/pages/Tryout/TryOut.jsx";
 
 import Login from "views/pages/Login";
 import Profile from "views/pages/Profile";
@@ -36,10 +36,6 @@ function App() {
 
           <Route exact path="/live" component={Live} />
           <Route exact path="/tour-de-faculty" component={page404} />
-
-          {/* Badut */}
-          <Route exact path="/badut" component={badutPage} />
-          <Route exact path="/badutHome" component={badutHomePage} />
 
           <Route path="*" component={page404} />
         </Switch>

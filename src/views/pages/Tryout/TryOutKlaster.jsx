@@ -1,5 +1,5 @@
-import TryOutLayout from "../components/TryoutLayout";
-import ToKluster from "../parts/ToKluster";
+import TryOutLayout from "../../components/TryoutLayout";
+import ToKluster from "./ToKluster";
 import React from "react";
 
 function TryOutKluster() {

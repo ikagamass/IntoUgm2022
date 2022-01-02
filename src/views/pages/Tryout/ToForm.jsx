@@ -6,7 +6,7 @@ import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useAuth } from "core/contexts";
 import { useHistory } from "react-router-dom";
 
-import useForm from "../../core/hooks/useForm";
+import useForm from "../../../core/hooks/useForm";
 import LoadingScreen from "views/components/LoadingScreen";
 
 function ToForm() {
