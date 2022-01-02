@@ -82,7 +82,7 @@ const Live = () => {
               {currentTitle}
             </h2>
             <iframe
-              width="560"
+              width="561"
               height="315"
               src={
                 "https://www.youtube.com/embed/onVjiCfi0wQ?list=RDid7O6MGqT2I"
