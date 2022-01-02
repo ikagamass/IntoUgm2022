@@ -20,12 +20,12 @@ function Profile() {
 
   useEffect(() => {
     if (userData?.status || false) {
-      console.log(userData);
+      // console.log(userData);
       setIsOpen(!userData.status);
     }
   });
   useEffect(() => {
-    console.log(isOpen);
+    // console.log(isOpen);
   }, [isOpen]);
 
   const closeModal = () => {

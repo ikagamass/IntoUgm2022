@@ -5,7 +5,8 @@ const Initial = ({ children }) => {
   const history = useHistory();
 
   useEffect(() => {
-    history.push("/login");
+    // Initial Route
+    history.push("/");
   }, []);
 
   return <div>{children}</div>;

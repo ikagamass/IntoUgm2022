@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SplashScreen from "views/parts/SplashScreen";
 import Navbar from "../components/Navbar";
 import Initial from "../../core/routeblocks/Initial";
+import BadutHomePage from "views/badut/BadutHomePage";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(true); // modal
@@ -33,7 +34,8 @@ const Home = () => {
       >
         {isOpen && <SplashScreen closeSplash={closeSplash} />}
 
-        <Navbar />
+        <BadutHomePage />
+        {/* <Navbar /> */}
       </section>
     </Initial>
   );

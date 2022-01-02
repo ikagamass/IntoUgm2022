@@ -1,23 +1,23 @@
 import React from "react";
-import logo from "../../assets/images/logo.png";
-import logo2 from "../../assets/images/logo2.png";
-import ikagamas from "../../assets/images/ikagamass.png";
+import logo from "../../../assets/images/logo.png";
+import logo2 from "../../../assets/images/logo2.png";
+import ikagamas from "../../../assets/images/ikagamass.png";
 import { useHistory } from "react-router-dom";
 
 import { IoChevronBack } from "react-icons/io5";
 
-import "../../assets/styles/_tryout.css";
+import "../../../assets/styles/_tryout.css";
 import { Link } from "react-router-dom";
 
-function AccountLayout({ children }) {
+function LiveLayout({ children, handleBack }) {
   const history = useHistory();
 
   return (
     <section
-      className="flex flex-col justify-between min-h-screen text-lg bg-center"
+      className="flex flex-col justify-between min-h-screen text-lg bg-left-bottom"
       style={{
-        background: "url('/images/bgAccountDesktop.jpg')",
-        backgroundSize: "100% 100%",
+        background: "url('/images/bgDesktopLive.jpg')",
+        backgroundSize: "auto 100%",
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -34,13 +34,13 @@ function AccountLayout({ children }) {
       <div id="back and footer">
         {/* back button */}
         <div className="px-10 mt-12 mb-5 sm:mt-0">
-          <Link
+          <button
             className="inline-block px-3 py-2 text-lg font-bold text-white rounded-full n bg-myDarkGreen"
-            to={"/try-out"}
+            onClick={handleBack}
           >
             <IoChevronBack className="inline mr-1" />
             Kembali
-          </Link>
+          </button>
         </div>
 
         {/* footer */}
@@ -75,4 +75,4 @@ function AccountLayout({ children }) {
   );
 }
 
-export default AccountLayout;
+export default LiveLayout;

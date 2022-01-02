@@ -8,8 +8,11 @@ import { IoChevronBack } from "react-icons/io5";
 
 import "../../assets/styles/_tryout.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const TryOutLayout = ({ children, backto }) => {
+  const history = useHistory();
+
   return (
     <section
       className="flex flex-col justify-between min-h-screen text-lg bg-left-bottom"
@@ -21,8 +24,9 @@ const TryOutLayout = ({ children, backto }) => {
     >
       <div className="relative px-10 ">
         <img
+          onClick={() => history.push("/")}
           src={logo}
-          className="h-16 mx-auto mt-16 sm:h-24 sm:mr-0 sm:mt-10"
+          className="h-16 mx-auto mt-16 sm:h-24 sm:mr-0 sm:mt-10 logoInto"
         />
 
         {children}

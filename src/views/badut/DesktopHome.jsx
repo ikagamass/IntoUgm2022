@@ -5,24 +5,26 @@ function DesktopHome() {
   const history = useHistory();
 
   const handleClick = (type) => {
-    alert("click");
-
+    // alert(type);
     switch (type) {
       case "Tour": {
-        history.push("/profile");
+        history.push("/tour-de-faculty");
         break;
       }
 
-      case "TO": {
-        history.push("/To");
+      case "Tryout": {
+        // alert("TO");
+        history.push("/try-out");
         break;
       }
       case "Into": {
+        // alert("Into");
         history.push("/Into");
         break;
       }
       case "Live": {
-        history.push("Live");
+        // alert("Live");
+        history.push("/live");
         break;
       }
 
@@ -50,7 +52,7 @@ function DesktopHome() {
         </button>
 
         {/* Monpera / Tryout */}
-        <button id="Monpera" onClick={() => handleClick("To")}>
+        <button id="Monpera" onClick={() => handleClick("Tryout")}>
           <img src="/images/menuLaptop/To.png" alt="" />
         </button>
 
