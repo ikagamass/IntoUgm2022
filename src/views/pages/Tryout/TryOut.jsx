@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 import ToMenu from "./ToMenu";
 import ToKluster from "views/pages/Tryout/ToKluster";
 import ToPaket from "./ToPaket";
+import ToForm from "./ToForm";
 
 function TryOut() {
   const history = useHistory();
-  const [modal, setmodal] = useState("paket");
+  const [modal, setmodal] = useState("daftar");
   const [currentTitle, setcurrentTitle] = useState("Try Out");
   const [hargaDibayar, sethargaDibayar] = useState(20000);
   const [mataUjian, setMataUjian] = useState("Saintek");
@@ -37,13 +38,28 @@ function TryOut() {
         break;
       }
       case "couple": {
+        alert("35");
         sethargaDibayar(35000);
         setmodal("kluster");
         break;
       }
-      case "ambis": {
+      case "geng": {
+        alert("75");
+
         sethargaDibayar(75000);
         setmodal("kluster");
+        break;
+      }
+
+      // Kluster
+      case "Saintek": {
+        setMataUjian("Saintek");
+        setmodal("daftar");
+        break;
+      }
+      case "Soshum": {
+        setMataUjian("Soshum");
+        setmodal("daftar");
         break;
       }
 
@@ -59,13 +75,18 @@ function TryOut() {
         break;
       }
       case "paket": {
-        // setcurrentTitle("Live Streaming");
+        setcurrentTitle("Pendaftaran");
         setmodal("menu");
         break;
       }
       case "kluster": {
         // setcurrentTitle("Live Streaming");
-        setmodal("menu");
+        setmodal("paket");
+        break;
+      }
+      case "daftar": {
+        // setcurrentTitle("Live Streaming");
+        setmodal("kluster");
         break;
       }
 
@@ -84,6 +105,14 @@ function TryOut() {
       )}
       {modal === "kluster" && (
         <ToKluster currentTitle={currentTitle} handleClick={handleClick} />
+      )}
+      {modal === "daftar" && (
+        <ToForm
+          currentTitle={currentTitle}
+          handleClick={handleClick}
+          hargaDibayar={hargaDibayar}
+          mataUjian={mataUjian}
+        />
       )}
     </TryOutLayout>
   );

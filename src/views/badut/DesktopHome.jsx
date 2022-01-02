@@ -14,7 +14,7 @@ function DesktopHome() {
 
       case "Tryout": {
         alert("TO");
-        history.push("/try-out");
+        history.push("/tryout");
         break;
       }
       case "Into": {

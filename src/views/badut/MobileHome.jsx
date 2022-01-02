@@ -42,7 +42,7 @@ const buttonData = [
     bg: "url('/images/menus/menu1.jpg')",
     bgHide: Menu1,
     text: "Try Out",
-    destination: "/try-out",
+    destination: "/tryout",
   },
   {
     bg: "url('/images/menus/menu2.jpg')",

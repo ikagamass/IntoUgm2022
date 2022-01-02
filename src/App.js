@@ -1,5 +1,3 @@
-import TryOutKlaster from "views/pages/Tryout/TryOutKlaster";
-import TryOutPendaftaran from "views/pages/Tryout/TryOutPendaftaran";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ContextProvider from "./core/contexts";
 
@@ -23,12 +21,7 @@ function App() {
           <Route exact path="/" component={Home} />
 
           {/* tryout */}
-          <Route exact path="/try-out" component={TryOut} />
-          <Route exact path="/try-out/kluster" component={TryOutKlaster} />
-          <Route
-            path="/try-out/daftar/:kluster"
-            component={TryOutPendaftaran}
-          />
+          <Route exact path="/tryout" component={TryOut} />
 
           {/* Login */}
           <Route path="/login" component={Login} />

@@ -34,7 +34,7 @@ function ToPaket({ currentTitle, handleClick }) {
                 style={{ background: "#00295D", color: "white" }}
               >
                 <p>{item.harga}</p>
-                <p>></p>
+                <p>{">"}</p>
               </div>
             </button>
           ))}

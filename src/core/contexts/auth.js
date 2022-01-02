@@ -47,6 +47,7 @@ const AuthStore = () => {
     },
 
     register: async (props) => {
+      console.log(props);
       const res = await POST_REGISTER(props);
 
       // console.log(res);
