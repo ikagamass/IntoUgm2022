@@ -73,6 +73,13 @@ function Profile() {
     window.open("https://pahamify.com/");
   };
 
+  const paket = () => {
+    if (userData.harga === 20000) return "Ngambis - 20.000";
+    else if (userData.harga === 35000) return "Couple Ambis - 35.000";
+    else if (userData.harga === 75000) return "Geng Ambis - 75.000";
+    else return "Tidak ditemukan";
+  };
+
   return (
     <UserOnlyRoute>
       <AccountLayout>
@@ -84,7 +91,11 @@ function Profile() {
         )}
 
         {modal === "payment" && (
-          <ReferralCode closeModal={closeModal} handlePayment={handlePayment} />
+          <ReferralCode
+            closeModal={closeModal}
+            handlePayment={handlePayment}
+            setIsLoading={setIsLoading}
+          />
         )}
 
         <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
@@ -176,6 +187,20 @@ function Profile() {
                 <p className="">{userData.noWA}</p>
               </div>
 
+              {/* Paket */}
+              <div className="flex ">
+                <p className="w-32 sm:w-40">Paket</p>
+                <p className="">{paket()}</p>
+              </div>
+
+              {userData.refferal && (
+                <div className="flex ">
+                  <p className="w-32 sm:w-40">Kode Referal</p>
+                  <p className="">{userData.refferal}</p>
+                </div>
+              )}
+
+              {/* Button, depend on status user */}
               {!userData.status ? (
                 <div className="flex items-baseline align-baseline gap-x-4">
                   {/* button belum aktif */}

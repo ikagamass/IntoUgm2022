@@ -5,7 +5,6 @@ function DesktopHome() {
   const history = useHistory();
 
   const handleClick = (type) => {
-    // alert(type);
     switch (type) {
       case "Tour": {
         history.push("/tour-de-faculty");
@@ -13,17 +12,14 @@ function DesktopHome() {
       }
 
       case "Tryout": {
-        alert("TO");
         history.push("/tryout");
         break;
       }
       case "Into": {
-        // alert("Into");
         history.push("/Into");
         break;
       }
       case "Live": {
-        // alert("Live");
         history.push("/live");
         break;
       }

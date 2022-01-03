@@ -134,6 +134,10 @@
   font-family: "acakadut";
 }
 
+.closeButton {
+  cursor: pointer;
+}
+
 .videowrapper {
   float: none;
   clear: both;

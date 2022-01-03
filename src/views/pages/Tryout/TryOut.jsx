@@ -38,14 +38,11 @@ function TryOut() {
         break;
       }
       case "couple": {
-        alert("35");
         sethargaDibayar(35000);
         setmodal("kluster");
         break;
       }
       case "geng": {
-        alert("75");
-
         sethargaDibayar(75000);
         setmodal("kluster");
         break;
