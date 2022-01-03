@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoChevronForward } from "react-icons/io5";
 
-function WarnPayment({ closeModal, handlePayment }) {
+function WarnPayment({ closeModal, onClickPayment }) {
   return (
     <div className="absolute top-0 left-0 z-50 flex w-screen min-h-screen bg-black bg-opacity-80 ">
       {/* modal */}
@@ -18,14 +18,13 @@ function WarnPayment({ closeModal, handlePayment }) {
             UGM 2022.
           </p>
 
-          <Link
-            to={"/midtrans"}
+          <button
             className="px-3 py-1 mt-2 text-lg font-bold text-white rounded-full bg-myDarkBlue"
-            onClick={handlePayment}
+            onClick={onClickPayment}
           >
             Bayar
             <IoChevronForward className="inline ml-1" />
-          </Link>
+          </button>
         </div>
 
         <div className="flex flex-col items-center justify-center mt-10">
