@@ -6,13 +6,12 @@ import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useAuth } from "core/contexts";
 import { useHistory } from "react-router-dom";
 
-import useForm from "../../core/hooks/useForm";
+import useForm from "../../../core/hooks/useForm";
 import LoadingScreen from "views/components/LoadingScreen";
 
-function ToForm() {
+function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
   const location = useLocation();
   const history = useHistory();
-  const klaster = location.pathname.split("/")[3];
 
   const { form, mutateForm, resetForm } = useForm({
     name: "",
@@ -64,6 +63,7 @@ function ToForm() {
   }
 
   function validatePhoneNumber(input_str) {
+    console.log(input_str);
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,8}$/im;
 
     return re.test(input_str);
@@ -181,8 +181,9 @@ function ToForm() {
       noHP: form.noHp,
       noWA: form.noWa,
       password: form.pass,
-      mataUjian: klaster,
+      mataUjian: mataUjian,
       password: form.password,
+      harga: hargaDibayar,
     };
 
     const daftar = await authMethods.register(payload);
@@ -201,8 +202,14 @@ function ToForm() {
     // console.log(isError);
   }, [isError]);
 
+  const paketUjian = (harga) => {
+    if (harga == 20000) return "Ngambis - 20.000";
+    else if (harga == 35000) return "Couple Ambis - 35.000";
+    if (harga == 75000) return "Geng Ambis - 75.000";
+  };
+
   const confirmModal = (
-    <div className="absolute top-0 left-0 flex w-screen min-h-screen bg-black bg-opacity-80">
+    <div className="absolute top-0 left-0 flex w-screen h-full min-h-screen bg-black bg-opacity-80">
       {/* modal */}
       <div
         className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
@@ -447,9 +454,12 @@ function ToForm() {
     <>
       <TitleText judul="Pendaftaran" />
       <div className="w-full px-4 py-6 mx-auto mt-8 bg-white rounded-3xl bg-opacity-70 sm:max-w-4xl lg:mx-0 lg:mr-auto">
-        <h2 className="mx-auto text-center sm:hidden acakadut">Pendaftaran</h2>
+        <h2 className="mx-auto text-center sm:hidden acakadut">
+          {currentTitle}
+        </h2>
 
         <div className="text-gray-600">
+          {/* Nama */}
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Nama</label>
             <input
@@ -461,6 +471,7 @@ function ToForm() {
             />
           </div>
 
+          {/* Asal Sekolah */}
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Asal Sekolah</label>
             <input
@@ -472,6 +483,7 @@ function ToForm() {
             />
           </div>
 
+          {/* Email */}
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Almat E-Mail</label>
             <input
@@ -483,6 +495,7 @@ function ToForm() {
             />
           </div>
 
+          {/* No Hp */}
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">No. Handphone</label>
             <input
@@ -494,6 +507,7 @@ function ToForm() {
             />
           </div>
 
+          {/* No Wa */}
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">No. WhatsApp</label>
             <input
@@ -502,6 +516,30 @@ function ToForm() {
               className="w-full px-3 py-1 text-base rounded-full myInput"
               onChange={mutateForm}
               value={form.noWa}
+            />
+          </div>
+
+          {/* Paket */}
+          <div className="flex flex-col mt-2 sm:flex-row">
+            <label className="font-bold w-52 text-mygreen">Paket</label>
+            <input
+              name="paket"
+              type="text"
+              className="w-full px-3 py-1 text-base rounded-full myInput"
+              disabled={true}
+              placeholder={paketUjian(hargaDibayar)}
+            />
+          </div>
+
+          {/* Mata Ujian */}
+          <div className="flex flex-col mt-2 sm:flex-row">
+            <label className="font-bold w-52 text-mygreen">Mata Ujian</label>
+            <input
+              name="paket"
+              type="text"
+              className="w-full px-3 py-1 text-base rounded-full myInput"
+              disabled={true}
+              placeholder={mataUjian}
             />
           </div>
 
@@ -529,7 +567,7 @@ function ToForm() {
 
           {/* daftar dan password note */}
           <div className="flex flex-col sm:flex-row sm:mt-3">
-            <p className="mt-3 font-semibold text-center text-myDarkBlue textNormal">
+            <p className="px-3 mt-3 font-semibold text-center text-white rounded-lg textNormal bg-myDarkBlue">
               Password harus berupa kombinasi angka dan huruf dan minimal 8
               karakter
             </p>
