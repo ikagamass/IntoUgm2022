@@ -88,8 +88,7 @@ export const POST_REFFERAL = (payload) => {
   return intoaxios
     .post("/payment/referral", { ...payload })
     .then((res) => {
-      let url = res.data.transactionRedirectUrl;
-      console.log(res);
+      console.log("sukses");
       console.log(res);
     })
     .catch((err) => {

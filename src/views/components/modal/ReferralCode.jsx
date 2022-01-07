@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { IoChevronForward } from "react-icons/io5";
 import Close from "../../../assets/images/Close.png";
 import useForm from "../../../core/hooks/useForm";
+import { POST_REFFERAL } from "api";
 
-function ReferralCode({ closeModal, handlePayment, setIsLoading }) {
+function ReferralCode({ closeModal, handlePayment, setIsLoading, userData }) {
   const { form, mutateForm, resetForm } = useForm({
     code: "",
   });
@@ -12,6 +13,16 @@ function ReferralCode({ closeModal, handlePayment, setIsLoading }) {
   // Fungsi handle referal
   const handleReff = async () => {
     setIsLoading(true);
+
+    const payload = {
+      email: userData.email,
+      referralCode: form.code,
+    };
+
+    let res = await POST_REFFERAL(payload);
+    setIsLoading(false);
+
+    // console.log(values);
   };
 
   return (

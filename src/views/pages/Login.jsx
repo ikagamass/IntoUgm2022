@@ -57,11 +57,11 @@ function Login() {
     };
 
     const login = await authMethods.login(payload);
-    console.log("login: ", login);
+    // console.log("login: ", login);
     setIsLoading(false);
 
     if (login.status !== 200) {
-      console.log("Error anjir", login.data.code);
+      // console.log("Error anjir", login.data.code);
       setIsError(true);
       setErrorMessage(login.data.code);
     }
@@ -75,10 +75,10 @@ function Login() {
   }, [status]);
 
   useEffect(() => {
-    console.log(isLoading);
+    // console.log(isLoading);
   }, [isLoading]);
 
-  console.log("userData luar", userData);
+  // console.log("userData luar", userData);
 
   const errorMessageUI = () => {
     switch (errorMessage) {

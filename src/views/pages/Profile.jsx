@@ -16,7 +16,7 @@ function Profile() {
   const { authMethods, status, userData } = useAuth();
   const history = useHistory();
 
-  const [modal, setmodal] = useState("warn");
+  const [modal, setmodal] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,12 +24,28 @@ function Profile() {
     setmodal(null);
   };
 
+  useEffect(() => {
+    if (userData.staus === false) {
+      setmodal("warn");
+    }
+  }, [userData]);
+
   const onClickPayment = () => {
-    console.log(userData);
+    // console.log(userData);
     if (userData.harga !== 20000) {
       setmodal("payment");
     } else {
       handlePayment();
+    }
+  };
+
+  const namaPaket = () => {
+    if (userData.harga === 20000) {
+      return "Ngambis";
+    } else if (userData.harga === 35000) {
+      return "Couple Ambis";
+    } else if (userData.harga === 75000) {
+      return "Geng Ambis";
     }
   };
 
@@ -42,12 +58,12 @@ function Profile() {
     const payload = {
       idUser: userData._id,
       mataUjian: userData.mataUjian,
-      price: 20000,
+      price: userData.harga,
       item_details: {
         id: "saintek",
-        price: 20000,
+        price: userData.harga,
         quantity: 1,
-        name: `Pendaftaran Tryout ${userData.mataUjian} Into UGM 2022`,
+        name: `${namaPaket()} ${userData.mataUjian} Into UGM 2022`,
         brand: "",
         category: userData.mataUjian,
         merchant_name: "IntoUgm2022",
@@ -96,6 +112,7 @@ function Profile() {
             closeModal={closeModal}
             handlePayment={handlePayment}
             setIsLoading={setIsLoading}
+            userData={userData}
           />
         )}
 

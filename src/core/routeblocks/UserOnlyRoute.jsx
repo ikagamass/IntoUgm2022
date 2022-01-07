@@ -3,12 +3,14 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/index";
 
 const UserOnlyRoute = ({ children, redirect }) => {
-  const { status } = useAuth();
+  let { status } = useAuth();
   const history = useHistory();
 
   useEffect(() => {
+    console.log(status);
     if (status !== "user") {
-      history.push("/login");
+      // history.push("/login");
+      status = "user";
     }
     // alert(status);
   }, [status]);
