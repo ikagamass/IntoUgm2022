@@ -25,14 +25,13 @@ const AuthStore = () => {
         setUserData(res.data.body.user_data);
       } else {
         setStatus("guest");
-        // console.log("Auth Not OK :", res.data.message);
       }
 
       return res;
     },
 
     register: async (props) => {
-      console.log(props);
+      // console.log(props);
       const res = await POST_REGISTER(props);
 
       if (res.data.status === "OK") {
@@ -55,14 +54,19 @@ const AuthStore = () => {
 
     restoreSession: async (props) => {
       const res = await POST_RESTORE_SESSION(props);
+      // console.log(res);
 
       if (res !== undefined) {
         if (res.data.status === "OK") {
           setStatus("user");
           setUserData(res.data.body.user_data);
         } else {
+          // console.log("Gagal resore, guest");
           setStatus("guest");
         }
+      } else {
+        // console.log("Gagal resore, guest");
+        setStatus("guest");
       }
     },
   };
@@ -71,8 +75,6 @@ const AuthStore = () => {
 
   useEffect(() => {
     let token = localStorage.getItem("token");
-    console.log("token", token);
-
     authMethods.restoreSession(token);
   }, []);
 

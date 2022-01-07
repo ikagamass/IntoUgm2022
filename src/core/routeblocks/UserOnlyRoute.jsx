@@ -2,17 +2,16 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/index";
 
-const UserOnlyRoute = ({ children, redirect }) => {
+const UserOnlyRoute = ({ children, redirect, currentPage }) => {
   let { status } = useAuth();
   const history = useHistory();
 
   useEffect(() => {
-    console.log(status);
-    if (status !== "user") {
-      // history.push("/login");
+    console.log("User only route", status);
+    if (status !== "user" && status !== "initial") {
+      history.push("/login");
       status = "user";
     }
-    // alert(status);
   }, [status]);
 
   return <div>{status === "user" && children}</div>;

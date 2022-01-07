@@ -98,7 +98,7 @@ function Profile() {
   };
 
   return (
-    <UserOnlyRoute>
+    <UserOnlyRoute currentPage="Login">
       <AccountLayout>
         {modal === "warn" && (
           <WarnPayment
