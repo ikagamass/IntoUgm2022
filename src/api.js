@@ -20,6 +20,7 @@ export const POST_REGISTER = ({
   noWA,
   password,
   mataUjian,
+  harga,
 }) => {
   const ayam = intoaxios
     .post("/user/register", {
@@ -30,6 +31,7 @@ export const POST_REGISTER = ({
       noWA,
       password,
       mataUjian,
+      harga,
     })
     .catch((err) => {
       console.log(err.response);
@@ -74,6 +76,20 @@ export const POST_MIDTRANS = (payload) => {
       let url = res.data.transactionRedirectUrl;
       console.log(res);
       window.open(url, "_blank");
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err.response);
+      console.log(err.request);
+    });
+};
+
+export const POST_REFFERAL = (payload) => {
+  return intoaxios
+    .post("/payment/referral", { ...payload })
+    .then((res) => {
+      let url = res.data.transactionRedirectUrl;
+      console.log(res);
       console.log(res);
     })
     .catch((err) => {

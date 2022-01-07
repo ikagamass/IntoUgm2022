@@ -26,11 +26,11 @@ const Home = () => {
     <Initial>
       <section
         className="flex flex-col justify-between min-h-screen text-lg bg-left-bottom"
-        style={{
-          background: "url('/images/bgdesktop.jpg')",
-          backgroundSize: "auto 100%",
-          backgroundRepeat: "no-repeat",
-        }}
+        // style={{
+        //   background: "url('/images/bgdesktop.jpg')",
+        //   backgroundSize: "auto 100%",
+        //   backgroundRepeat: "no-repeat",
+        // }}
       >
         {isOpen && <SplashScreen closeSplash={closeSplash} />}
 

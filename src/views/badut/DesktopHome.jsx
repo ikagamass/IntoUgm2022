@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import PageNotReady from "views/components/modal/PageNotReady";
 
 function DesktopHome() {
   const history = useHistory();
 
+  const [modal, setmodal] = useState(false);
+
+  const closeModal = () => {
+    setmodal(false);
+  };
+
   const handleClick = (type) => {
     switch (type) {
-      case "Tour": {
-        history.push("/tour-de-faculty");
-        break;
-      }
-
       case "Tryout": {
         history.push("/tryout");
         break;
       }
+
+      case "Tour": {
+        setmodal(true);
+        // history.push("/tour-de-faculty");
+        break;
+      }
+
       case "Into": {
-        history.push("/Into");
+        setmodal(true);
+
+        // history.push("/Into");
         break;
       }
       case "Live": {
-        history.push("/live");
+        // history.push("/live");
+        setmodal(true);
         break;
       }
 
@@ -90,6 +102,8 @@ function DesktopHome() {
           <img src="/images/menuDesktop/Merch.png" alt="" />
         </button> */}
       </div>
+
+      {modal && <PageNotReady closeModal={closeModal} />}
     </section>
   );
 }

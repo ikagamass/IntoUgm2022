@@ -25,6 +25,7 @@ function Profile() {
   };
 
   const onClickPayment = () => {
+    console.log(userData);
     if (userData.harga !== 20000) {
       setmodal("payment");
     } else {

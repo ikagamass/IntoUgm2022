@@ -13,23 +13,8 @@ const AuthStore = () => {
   const [isRestore, setRestore] = useState(0); // initial | user | guest
 
   const authMethods = {
-    // authenticate: async (token) => {
-    //   const res = await POST_CONTINUE_SESSION(token);
-
-    //   if (res.status === "OK") {
-    //     setUserData(res.data.body.user_data);
-    //     setToken(res.data.body.token);
-    //     setStatus("user");
-    //   } else {
-    //     setStatus("guest");
-    //   }
-    // },
-
     login: async (props) => {
       const res = await POST_LOGIN(props);
-
-      // console.log("Woyyy jalan diluar");
-      // console.log(res);
 
       //success
 
@@ -50,18 +35,12 @@ const AuthStore = () => {
       console.log(props);
       const res = await POST_REGISTER(props);
 
-      // console.log(res);
-
       if (res.data.status === "OK") {
-        // console.log("auth set : ", "user");
-
         setUserData(res.data.body.user_data);
         setToken(res.data.body.token);
         setStatus("user");
       } else {
         setStatus("guest");
-
-        // console.log("Auth Not OK :", res.data.message);
       }
 
       return res;
@@ -77,8 +56,6 @@ const AuthStore = () => {
     restoreSession: async (props) => {
       const res = await POST_RESTORE_SESSION(props);
 
-      // console.log(res);
-
       if (res !== undefined) {
         if (res.data.status === "OK") {
           setStatus("user");
@@ -90,10 +67,7 @@ const AuthStore = () => {
     },
   };
 
-  useEffect(() => {
-    // console.log("Woyyy harusnya ada user data");
-    // console.log(userData);
-  }, [userData]);
+  useEffect(() => {}, [userData]);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -104,15 +78,11 @@ const AuthStore = () => {
 
   // Set token to local storage
   useEffect(() => {
-    // console.log("save token");
-    // console.log(token);
     if (token) localStorage.setItem("token", token);
     else {
       // console.log("ga ada token");
     }
   }, [token]);
-
-  // console.log("stussss", status);
 
   return {
     status,

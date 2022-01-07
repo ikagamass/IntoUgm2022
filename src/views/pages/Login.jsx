@@ -210,7 +210,7 @@ function Login() {
         </p>
         <Link
           className="font-bold text-center text-mygreen hover:text-myDarkBlue"
-          to={"try-out/kluster"}
+          to={"tryout"}
         >
           {"Daftar Sekarang"}
         </Link>
