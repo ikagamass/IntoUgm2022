@@ -4,11 +4,16 @@ import { IoChevronForward } from "react-icons/io5";
 import Close from "../../../assets/images/Close.png";
 import useForm from "../../../core/hooks/useForm";
 import { POST_REFFERAL } from "api";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function ReferralCode({ closeModal, handlePayment, setIsLoading, userData }) {
   const { form, mutateForm, resetForm } = useForm({
     code: "",
   });
+  const history = useHistory();
+
+  const [errorMessage, seteErrorMessage] = useState(null);
 
   // Fungsi handle referal
   const handleReff = async () => {
@@ -20,6 +25,13 @@ function ReferralCode({ closeModal, handlePayment, setIsLoading, userData }) {
     };
 
     let res = await POST_REFFERAL(payload);
+    console.log(res);
+
+    if (res?.data?.code === "referral-already-used") {
+      seteErrorMessage("Referral sudah digunakan");
+    }
+
+    // history.push("/profile");
     setIsLoading(false);
 
     // console.log(values);
@@ -54,6 +66,12 @@ function ReferralCode({ closeModal, handlePayment, setIsLoading, userData }) {
                 Submit
               </button>
             </div>
+
+            {errorMessage !== null && (
+              <p className="px-2 text-white bg-red-500 rounded-xl">
+                {errorMessage}
+              </p>
+            )}
 
             <p className="text-sm font-bold text-center text-mygreen">
               Referal code bisa didapatkan dari teman anda yang sudah melakukan

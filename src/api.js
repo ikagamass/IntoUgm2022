@@ -93,6 +93,7 @@ export const POST_REFFERAL = (payload) => {
     })
     .catch((err) => {
       console.log(err.response);
+      return err.response;
       console.log(err.request);
     });
 };
