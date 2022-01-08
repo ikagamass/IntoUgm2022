@@ -10,7 +10,7 @@ import ToForm from "./ToForm";
 
 function TryOut() {
   const history = useHistory();
-  const [modal, setmodal] = useState("daftar");
+  const [modal, setmodal] = useState("menu");
   const [currentTitle, setcurrentTitle] = useState("Try Out");
   const [hargaDibayar, sethargaDibayar] = useState(20000);
   const [mataUjian, setMataUjian] = useState("Saintek");
