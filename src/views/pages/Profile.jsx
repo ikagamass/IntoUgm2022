@@ -51,7 +51,7 @@ function Profile() {
 
   // Midtrans
   const handlePayment = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     setIsLoading(true);
     setmodal(null);
 
@@ -70,7 +70,7 @@ function Profile() {
       },
     };
 
-    // let res = await POST_MIDTRANS(payload);
+    let res = await POST_MIDTRANS(payload);
     setIsLoading(false);
 
     // console.log(values);
@@ -211,10 +211,10 @@ function Profile() {
                 <p className="">{paket()}</p>
               </div>
 
-              {userData.referral && (
+              {userData.referralCode && userData.harga != 20000 && (
                 <div className="flex ">
                   <p className="w-32 sm:w-40">Kode Referal</p>
-                  <p className="">{userData.referral}</p>
+                  <p className="">{userData.referralCode}</p>
                 </div>
               )}
 

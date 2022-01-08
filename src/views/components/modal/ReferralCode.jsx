@@ -32,7 +32,7 @@ function ReferralCode({ closeModal, handlePayment, setIsLoading, userData }) {
       seteErrorMessage("Referral sudah digunakan");
     } else if (res?.data?.code === "referral-code-not-found") {
       seteErrorMessage("Referral tidak ditemukan");
-    } else {
+    } else if (res?.data?.code === "referral-successfully-used") {
       window.location.reload();
     }
   };
