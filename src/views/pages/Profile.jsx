@@ -211,10 +211,10 @@ function Profile() {
                 <p className="">{paket()}</p>
               </div>
 
-              {userData.refferal && (
+              {userData.referral && (
                 <div className="flex ">
                   <p className="w-32 sm:w-40">Kode Referal</p>
-                  <p className="">{userData.refferal}</p>
+                  <p className="">{userData.referral}</p>
                 </div>
               )}
 

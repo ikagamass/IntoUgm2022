@@ -26,15 +26,15 @@ function ReferralCode({ closeModal, handlePayment, setIsLoading, userData }) {
 
     let res = await POST_REFFERAL(payload);
     console.log(res);
+    setIsLoading(false);
 
     if (res?.data?.code === "referral-already-used") {
       seteErrorMessage("Referral sudah digunakan");
+    } else if (res?.data?.code === "referral-code-not-found") {
+      seteErrorMessage("Referral tidak ditemukan");
+    } else {
+      window.location.reload();
     }
-
-    // history.push("/profile");
-    setIsLoading(false);
-
-    // console.log(values);
   };
 
   return (
