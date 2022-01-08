@@ -51,7 +51,7 @@ function Profile() {
 
   // Midtrans
   const handlePayment = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     setIsLoading(true);
     setmodal(null);
 
