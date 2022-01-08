@@ -35,7 +35,7 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
   };
 
   useEffect(() => {
-    console.log(isOpen);
+    // console.log(isOpen);
   }, [isOpen]);
 
   // Close Modal Confirmation
@@ -64,7 +64,6 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
 
   function validatePhoneNumber(input_str) {
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,8}$/im;
-
     return re.test(input_str);
   }
 
@@ -162,7 +161,7 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
     setIsLoading(true);
     setIsOpen(false);
     event.preventDefault();
-    console.log(form);
+    // console.log(form);
 
     // validation
     const isValid = validateAll();
@@ -186,7 +185,7 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
     };
 
     const daftar = await authMethods.register(payload);
-    console.log(daftar);
+    // console.log(daftar);
 
     setIsLoading(false);
     if (daftar.status !== 200) {
@@ -198,7 +197,7 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
 
   // Modal Cek is Error
   useEffect(() => {
-    console.log(isError);
+    // console.log(isError);
   }, [isError]);
 
   const paketUjian = (harga) => {

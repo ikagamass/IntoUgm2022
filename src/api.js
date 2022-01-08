@@ -34,8 +34,8 @@ export const POST_REGISTER = ({
       harga,
     })
     .catch((err) => {
-      console.log(err.response);
-      console.log(err.request);
+      // console.log(err.response);
+      // console.log(err.request);
 
       return err.response;
     });
@@ -51,8 +51,8 @@ export const POST_LOGIN = ({ email, password }) => {
       password,
     })
     .catch((err) => {
-      console.log(err.response);
-      console.log(err.request);
+      // console.log(err.response);
+      // console.log(err.request);
 
       return err.response;
     });
@@ -62,10 +62,10 @@ export const POST_LOGIN = ({ email, password }) => {
 };
 
 export const POST_RESTORE_SESSION = (token) => {
-  console.log(token);
+  // console.log(token);
   return intoaxios.post("/user/restore", { token }).catch((err) => {
-    console.log(err.response);
-    console.log(err.request);
+    // console.log(err.response);
+    // console.log(err.request);
   });
 };
 
@@ -74,13 +74,13 @@ export const POST_MIDTRANS = (payload) => {
     .post("/payment", { ...payload })
     .then((res) => {
       let url = res.data.transactionRedirectUrl;
-      console.log(res);
+      // console.log(res);
       window.open(url, "_blank");
-      console.log(res);
+      // console.log(res);
     })
     .catch((err) => {
-      console.log(err.response);
-      console.log(err.request);
+      // console.log(err.response);
+      // console.log(err.request);
     });
 };
 
