@@ -70,7 +70,7 @@ function Profile() {
       },
     };
 
-    let res = await POST_MIDTRANS(payload);
+    // let res = await POST_MIDTRANS(payload);
     setIsLoading(false);
 
     // console.log(values);
