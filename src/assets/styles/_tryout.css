@@ -1,6 +1,22 @@
-.yellowButton {
+.bgButtonKluster {
   background-color: #e2d234;
   box-shadow: 0px 4.16667px 10.4167px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 640px) {
+  .bgButtonKluster {
+    background-color: #11645b;
+    box-shadow: 0px 4.16667px 10.4167px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.bgYellowButton {
+  background-color: #e2d234;
+  box-shadow: 0px 4.16667px 10.4167px rgba(0, 0, 0, 0.2);
+}
+
+.klusterText {
+  background-color: #e2d234;
 }
 
 .myGreen {

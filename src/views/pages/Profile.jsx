@@ -5,6 +5,8 @@ import Wa from "../../assets/images/wa.svg";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 import UserOnlyRoute from "core/routeblocks/UserOnlyRoute";
 import WarnPayment from "views/components/modal/WarnPayment";
+import ReferralCode from "views/components/modal/ReferralCode";
+
 import { useAuth } from "core/contexts";
 import { useHistory } from "react-router-dom";
 import { POST_MIDTRANS } from "../../api";
@@ -14,45 +16,61 @@ function Profile() {
   const { authMethods, status, userData } = useAuth();
   const history = useHistory();
 
-  const [isOpen, setIsOpen] = useState(true); // modal
+  const [modal, setmodal] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (userData?.status || false) {
-      console.log(userData);
-      setIsOpen(!userData.status);
-    }
-  });
-  useEffect(() => {
-    console.log(isOpen);
-  }, [isOpen]);
-
   const closeModal = () => {
-    setIsOpen(false);
+    setmodal(null);
   };
 
+  useEffect(() => {
+    if (userData.staus === false) {
+      setmodal("warn");
+    }
+  }, [userData]);
+
+  const onClickPayment = () => {
+    // console.log(userData);
+    if (userData.harga !== 20000) {
+      setmodal("payment");
+    } else {
+      handlePayment();
+    }
+  };
+
+  const namaPaket = () => {
+    if (userData.harga === 20000) {
+      return "Ngambis";
+    } else if (userData.harga === 35000) {
+      return "Couple Ambis";
+    } else if (userData.harga === 75000) {
+      return "Geng Ambis";
+    }
+  };
+
+  // Midtrans
   const handlePayment = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    setIsOpen(false);
+    setmodal(null);
 
     const payload = {
       idUser: userData._id,
       mataUjian: userData.mataUjian,
-      price: 20000,
+      price: userData.harga,
       item_details: {
         id: "saintek",
-        price: 20000,
+        price: userData.harga,
         quantity: 1,
-        name: `Pendaftaran Tryout ${userData.mataUjian} Into UGM 2022`,
+        name: `${namaPaket()} ${userData.mataUjian} Into UGM 2022`,
         brand: "",
         category: userData.mataUjian,
         merchant_name: "IntoUgm2022",
       },
     };
 
-    let res = await POST_MIDTRANS(payload);
+    // let res = await POST_MIDTRANS(payload);
     setIsLoading(false);
 
     // console.log(values);
@@ -64,18 +82,40 @@ function Profile() {
     history.push("/login");
   };
 
-  const toWhatsapp = () => {
+  const handleWhatsapp = () => {
     window.open("https://linktr.ee/ikagamass_ugm");
   };
 
+  const handlePahamify = () => {
+    window.open("https://pahamify.com/");
+  };
+
+  const paket = () => {
+    if (userData.harga === 20000) return "Ngambis - 20.000";
+    else if (userData.harga === 35000) return "Couple Ambis - 35.000";
+    else if (userData.harga === 75000) return "Geng Ambis - 75.000";
+    else return "Tidak ditemukan";
+  };
+
   return (
-    <UserOnlyRoute>
+    <UserOnlyRoute currentPage="Login">
       <AccountLayout>
-        {isOpen === true ? (
-          <WarnPayment closeModal={closeModal} handlePayment={handlePayment} />
-        ) : (
-          ""
+        {modal === "warn" && (
+          <WarnPayment
+            closeModal={closeModal}
+            onClickPayment={onClickPayment}
+          />
         )}
+
+        {modal === "payment" && (
+          <ReferralCode
+            closeModal={closeModal}
+            handlePayment={handlePayment}
+            setIsLoading={setIsLoading}
+            userData={userData}
+          />
+        )}
+
         <h4 className="hidden mt-8 mb-16 text-4xl font-bold text-center sm:block font-acakadut">
           Akun
         </h4>
@@ -165,12 +205,26 @@ function Profile() {
                 <p className="">{userData.noWA}</p>
               </div>
 
+              {/* Paket */}
+              <div className="flex ">
+                <p className="w-32 sm:w-40">Paket</p>
+                <p className="">{paket()}</p>
+              </div>
+
+              {userData.referral && (
+                <div className="flex ">
+                  <p className="w-32 sm:w-40">Kode Referal</p>
+                  <p className="">{userData.referral}</p>
+                </div>
+              )}
+
+              {/* Button, depend on status user */}
               {!userData.status ? (
                 <div className="flex items-baseline align-baseline gap-x-4">
                   {/* button belum aktif */}
                   <button
                     className="px-4 py-1 mt-3 text-base font-bold text-center text-white bg-blue-500 rounded-full"
-                    onClick={handlePayment}
+                    onClick={onClickPayment}
                   >
                     Aktivasi
                   </button>
@@ -184,6 +238,7 @@ function Profile() {
                   <button
                     className="w-full py-1 mt-3 text-base font-bold text-center text-white rounded-full"
                     style={{ backgroundColor: "#577CFF" }}
+                    onClick={handlePahamify}
                   >
                     Akses Akun Pahamify
                   </button>
@@ -191,7 +246,7 @@ function Profile() {
                   <button
                     className="w-full py-1 mt-3 text-base font-bold text-center text-white rounded-full "
                     style={{ backgroundColor: "#25D366" }}
-                    onClick={toWhatsapp}
+                    onClick={handleWhatsapp}
                   >
                     <AiOutlineWhatsApp className="inline-block mb-1 mr-1 sm:hidden md:inline-block" />
                     {/* <img src={Wa} className="inline-block w-6 h-6" /> */}

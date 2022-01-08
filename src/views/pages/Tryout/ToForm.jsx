@@ -63,9 +63,7 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
   }
 
   function validatePhoneNumber(input_str) {
-    console.log(input_str);
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,8}$/im;
-
     return re.test(input_str);
   }
 

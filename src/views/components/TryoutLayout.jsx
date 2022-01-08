@@ -2,14 +2,17 @@ import React from "react";
 import logo from "../../assets/images/logo.png";
 import logo2 from "../../assets/images/logo2.png";
 import ikagamas from "../../assets/images/ikagamass.png";
-import TryoutMenu from "../parts/ToMenu";
+import TryoutMenu from "../pages/Tryout/ToMenu";
 
 import { IoChevronBack } from "react-icons/io5";
 
 import "../../assets/styles/_tryout.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const TryOutLayout = ({ children, backto }) => {
+const TryOutLayout = ({ children, backto, handleBack }) => {
+  const history = useHistory();
+
   return (
     <section
       className="flex flex-col justify-between min-h-screen text-lg bg-left-bottom"
@@ -21,8 +24,9 @@ const TryOutLayout = ({ children, backto }) => {
     >
       <div className="relative px-10 ">
         <img
+          onClick={() => history.push("/")}
           src={logo}
-          className="h-16 mx-auto mt-16 sm:h-24 sm:mr-0 sm:mt-10"
+          className="h-16 mx-auto mt-16 sm:h-24 sm:mr-0 sm:mt-10 logoInto"
         />
 
         {children}
@@ -30,13 +34,13 @@ const TryOutLayout = ({ children, backto }) => {
 
       {/* back button */}
       <div className="px-10 mt-12 mb-5 sm:mt-0">
-        <Link
+        <button
           className="inline-block px-3 py-2 text-lg font-bold text-white rounded-full n bg-myDarkGreen"
-          to={backto}
+          onClick={handleBack}
         >
           <IoChevronBack className="inline mr-1" />
           Kembali
-        </Link>
+        </button>
       </div>
 
       {/* footer */}
