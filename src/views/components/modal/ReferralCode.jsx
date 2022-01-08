@@ -88,14 +88,13 @@ function ReferralCode({ closeModal, handlePayment, setIsLoading, userData }) {
             ini
           </p>
 
-          <Link
-            to={"/midtrans"}
+          <button
             className="px-3 py-1 mt-2 text-lg font-bold text-white rounded-full bg-myDarkBlue"
             onClick={handlePayment}
           >
             Bayar
             <IoChevronForward className="inline ml-1" />
-          </Link>
+          </button>
 
           {/* <button
             className="px-3 py-1 mt-2 text-lg font-bold text-white rounded-full bg-myDarkGreen"
