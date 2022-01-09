@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import PageNotReady from "views/components/modal/PageNotReady";
+import tanya from "assets/images/tanya.png";
 
 function DesktopHome() {
   const history = useHistory();
 
   const [modal, setmodal] = useState(false);
+  const [tutor, setTutor] = useState(true);
 
   const closeModal = () => {
     setmodal(false);
@@ -48,7 +50,7 @@ function DesktopHome() {
       style={{ backgroundImage: "url('/images/bgHomeFull.jpg')" }}
     >
       {/* 1024 */}
-      <div id="AssetContainerSmall" className="mx-auto my-auto border">
+      <div id="AssetContainerSmall" className="mx-auto my-auto">
         {/* Into / Into */}
         <button id="Into" onClick={() => handleClick("Into")}>
           <img src="/images/menuLaptop/Into.png" alt="" />
@@ -104,6 +106,41 @@ function DesktopHome() {
       </div>
 
       {modal && <PageNotReady closeModal={closeModal} />}
+
+      {/* Tanda tanya button */}
+      {!tutor && (
+        <button
+          className="fixed text-lg rounded-full bottom-4 right-4 text-mygreen"
+          onClick={() => setTutor(true)}
+        >
+          <img src={tanya} height={80} width={80} />
+        </button>
+      )}
+
+      {/* Tutor screen */}
+      {/* 1024 */}
+      {tutor && (
+        <div className="fixed z-40 flex w-full h-full tutorScreen">
+          {/* <div className="flex"> */}
+          <div className="flex mx-auto my-auto TutorModal">
+            <div className="mx-auto my-auto">
+              <p className="w-full text-lg font-bold text-center text-mygreen px-80">
+                Selamat datang di website InTO UGM 2022! Anda dapat mengklik
+                berbagai objek yang ada untuk mengakses menu dalam website ini
+              </p>
+              <div className="flex ">
+                <button
+                  onClick={() => setTutor(false)}
+                  className="px-3 py-1 mx-auto mt-1 text-base text-lg font-bold text-white rounded-full bg-mygreen "
+                >
+                  {"Lanjut >"}
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* </div> */}
+        </div>
+      )}
     </section>
   );
 }
