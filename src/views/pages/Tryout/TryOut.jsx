@@ -12,7 +12,7 @@ function TryOut() {
   const history = useHistory();
   const [modal, setmodal] = useState("menu");
   const [currentTitle, setcurrentTitle] = useState("Try Out");
-  const [hargaDibayar, sethargaDibayar] = useState(20000);
+  const [hargaDibayar, sethargaDibayar] = useState(30000);
   const [mataUjian, setMataUjian] = useState("Saintek");
 
   const handleClick = (nama) => {
@@ -33,17 +33,17 @@ function TryOut() {
 
       // Paket
       case "ambis": {
-        sethargaDibayar(20000);
+        sethargaDibayar(30000);
         setmodal("kluster");
         break;
       }
       case "couple": {
-        sethargaDibayar(35000);
+        sethargaDibayar(50000);
         setmodal("kluster");
         break;
       }
       case "geng": {
-        sethargaDibayar(75000);
+        sethargaDibayar(120000);
         setmodal("kluster");
         break;
       }

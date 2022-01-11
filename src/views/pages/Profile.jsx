@@ -32,7 +32,7 @@ function Profile() {
 
   const onClickPayment = () => {
     // console.log(userData);
-    if (userData.harga !== 20000) {
+    if (userData.harga !== 30000 && userData.harga !== 20000) {
       setmodal("payment");
     } else {
       handlePayment();
@@ -42,9 +42,15 @@ function Profile() {
   const namaPaket = () => {
     if (userData.harga === 20000) {
       return "Ngambis";
+    } else if (userData.harga === 30000) {
+      return "Ngambis";
     } else if (userData.harga === 35000) {
       return "Couple Ambis";
+    } else if (userData.harga === 50000) {
+      return "Couple Ambis";
     } else if (userData.harga === 75000) {
+      return "Geng Ambis";
+    } else if (userData.harga === 120000) {
       return "Geng Ambis";
     }
   };
@@ -92,8 +98,11 @@ function Profile() {
 
   const paket = () => {
     if (userData.harga === 20000) return "Ngambis - 20.000";
+    else if (userData.harga === 30000) return "Ngambis - 30.000";
     else if (userData.harga === 35000) return "Couple Ambis - 35.000";
+    else if (userData.harga === 50000) return "Couple Ambis - 50.000";
     else if (userData.harga === 75000) return "Geng Ambis - 75.000";
+    else if (userData.harga === 120000) return "Geng Ambis - 120.000";
     else return "Tidak ditemukan";
   };
 
@@ -211,7 +220,7 @@ function Profile() {
                 <p className="">{paket()}</p>
               </div>
 
-              {userData.referralCode && userData.harga != 20000 && (
+              {userData.referralCode && userData.harga != 30000 && (
                 <div className="flex ">
                   <p className="w-32 sm:w-40">Kode Referal</p>
                   <p className="">{userData.referralCode}</p>

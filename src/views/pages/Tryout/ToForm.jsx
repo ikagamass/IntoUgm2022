@@ -201,9 +201,9 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
   }, [isError]);
 
   const paketUjian = (harga) => {
-    if (harga == 20000) return "Ngambis - 20.000";
-    else if (harga == 35000) return "Couple Ambis - 35.000";
-    if (harga == 75000) return "Geng Ambis - 75.000";
+    if (harga == 30000) return "Ngambis - 30.000";
+    else if (harga == 50000) return "Couple Ambis - 50.000";
+    if (harga == 120000) return "Geng Ambis - 130.000";
   };
 
   const confirmModal = (
