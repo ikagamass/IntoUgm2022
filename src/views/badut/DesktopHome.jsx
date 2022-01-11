@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import PageNotReady from "views/components/modal/PageNotReady";
 import tanya from "assets/images/tanya.png";
+import Timeline from "./Timeline";
+
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 function DesktopHome() {
   const history = useHistory();
 
   const [modal, setmodal] = useState(false);
-  const [tutor, setTutor] = useState(true);
+  const [tutor, setTutor] = useState(false);
+  const [timeline, setTimeline] = useState(false);
 
   const closeModal = () => {
     setmodal(false);
@@ -141,6 +145,23 @@ function DesktopHome() {
           {/* </div> */}
         </div>
       )}
+
+      {/* Tombol Timeline and timeline */}
+      <div
+        className="fixed top-0 left-0 right-0 bg-white bg-opacity-30"
+        onClick={() => setTimeline(true)}
+      >
+        <p className="flex justify-center py-1 font-bold text-center text-mygreen clickAble gap-x-1">
+          Lini Masa{" "}
+          <MdKeyboardArrowDown
+            className="my-auto"
+            stroke-width="2"
+            stroke="none"
+          />
+        </p>
+      </div>
+
+      {timeline && <Timeline setTimeline={setTimeline} />}
     </section>
   );
 }

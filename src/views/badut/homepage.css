@@ -177,3 +177,12 @@
     background-size: 1280px 720px;
   }
 }
+
+/* Timeline */
+.timelineSceen {
+  background-image: url("../../assets/images/tryoutBackground.jpg");
+}
+
+.clickAble {
+  cursor: pointer;
+}
