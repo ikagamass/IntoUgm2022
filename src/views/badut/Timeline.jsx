@@ -20,7 +20,10 @@ function Timeline({ setTimeline }) {
         <div className="mx-auto my-auto">
           <div className="flex flex-col sm:flex-row gap-y-3 gap-x-10 sm:justify-between">
             {menu.map((item, idx) => (
-              <div className="lg:w-56 xl:w-64 bgYellowButton rounded-xl sm:max-w-xs clickAble">
+              <div
+                className="lg:w-56 xl:w-64 bgYellowButton rounded-xl sm:max-w-xs clickAble"
+                onClick={() => window.open(item.to)}
+              >
                 {/* md:h-48 sm:h-44 */}
                 <img
                   src={item.pict}
@@ -42,18 +45,21 @@ function Timeline({ setTimeline }) {
 
       {/* Profile */}
       <div className="fixed top-10 left-10">
-        <p className="mb-2 text-xl font-bold myGreen">Halo, {userData.nama}</p>
+        <p className="mb-2 text-xl font-bold myGreen">
+          {" "}
+          {userData.nama ? `Halo, ${userData.nama}` : "Anda belum login"}
+        </p>
         <Link
           className="inline px-3 py-1 mt-3 text-base text-lg font-bold text-white rounded-full myGreen bg-mygreen"
           to={"/profile"}
         >
-          {"Lihat Akun Anda >"}
+          {userData.nama ? "Lihat Akun Anda >" : "Login sekarang >"}
         </Link>
       </div>
 
       {/* Kembali */}
       <div
-        className="fixed bottom-0 left-0 right-0 bg-white bg-opacity-30"
+        className="fixed bottom-0 left-0 right-0 bg-white rounded-t-full bg-opacity-30"
         onClick={() => setTimeline(false)}
       >
         <p className="flex justify-center py-1 font-bold text-center text-mygreen clickAble gap-x-1">
@@ -75,25 +81,25 @@ const menu = [
   {
     text1: "INTO",
     text2: "Bercengkerama",
-    pict: Menu1,
-    to: "",
+    pict: Menu2,
+    to: "https://www.instagram.com/p/CWqGsR-lVDB/",
   },
   {
     text1: "Kilas Balik",
     text2: "Into UGM 2021",
-    pict: Menu2,
-    to: "",
+    pict: Menu1,
+    to: "https://www.instagram.com/p/CK6RFqOlK4x/",
   },
   {
     text1: "Untuk Ekspresi:",
     text2: "Tulis Harapanmu!",
     pict: Menu3,
-    to: "",
+    to: "https://www.figma.com/file/Hwz4QEzmyLKmJuLIpV5UAN/Untitled?node-id=0%3A1",
   },
   {
     text1: "Kunjungi Akun",
     text2: "Tiktok Kami",
     pict: Menu4,
-    to: "",
+    to: "https://www.tiktok.com/@intougm",
   },
 ];

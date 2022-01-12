@@ -148,7 +148,7 @@ function DesktopHome() {
 
       {/* Tombol Timeline and timeline */}
       <div
-        className="fixed top-0 left-0 right-0 bg-white bg-opacity-30"
+        className="fixed top-0 left-0 right-0 bg-white rounded-b-full bg-opacity-30"
         onClick={() => setTimeline(true)}
       >
         <p className="flex justify-center py-1 font-bold text-center text-mygreen clickAble gap-x-1">
