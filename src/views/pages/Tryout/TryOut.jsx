@@ -33,17 +33,17 @@ function TryOut() {
 
       // Paket
       case "ambis": {
-        sethargaDibayar(30000);
+        sethargaDibayar(20000);
         setmodal("kluster");
         break;
       }
       case "couple": {
-        sethargaDibayar(50000);
+        sethargaDibayar(35000);
         setmodal("kluster");
         break;
       }
       case "geng": {
-        sethargaDibayar(120000);
+        sethargaDibayar(75000);
         setmodal("kluster");
         break;
       }
