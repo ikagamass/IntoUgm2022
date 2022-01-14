@@ -50,22 +50,19 @@ const button = [
   {
     teks1: "Ngambis",
     teks2: "Satu harga untuk satu akun.",
-    tujuan: "/try-out/kluster",
-    harga: "Rp 30.000",
+    harga: "Rp 20.000",
     nama: "ambis",
   },
   {
     teks1: "Couple Ambis",
     teks2: "Satu harga untuk dua akun.",
-    harga: "Rp 50.000",
-    tujuan: "/login",
+    harga: "Rp 35.000",
     nama: "couple",
   },
   {
     teks1: "Geng Ambis",
     teks2: "Satu harga untuk lima akun.",
-    harga: "Rp 120.000",
-    tujuan: "#",
+    harga: "Rp 75.000",
     nama: "geng",
   },
 ];

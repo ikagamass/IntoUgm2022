@@ -220,12 +220,14 @@ function Profile() {
                 <p className="">{paket()}</p>
               </div>
 
-              {userData.referralCode && userData.harga != 30000 && (
-                <div className="flex ">
-                  <p className="w-32 sm:w-40">Kode Referal</p>
-                  <p className="">{userData.referralCode}</p>
-                </div>
-              )}
+              {userData.referralCode &&
+                userData.harga != 30000 &&
+                userData.harga != 20000 && (
+                  <div className="flex ">
+                    <p className="w-32 sm:w-40">Kode Referal</p>
+                    <p className="">{userData.referralCode}</p>
+                  </div>
+                )}
 
               {/* Button, depend on status user */}
               {!userData.status ? (
