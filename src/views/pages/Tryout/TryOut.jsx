@@ -15,12 +15,17 @@ function TryOut() {
   const [hargaDibayar, sethargaDibayar] = useState(30000);
   const [mataUjian, setMataUjian] = useState("Saintek");
 
+  // Modal Gak Bisa diakses
+  const [modalPendaftaranDitutup, setmodalPendaftaranDitutup] = useState(false);
+
   const handleClick = (nama) => {
     switch (nama) {
       // Menu
       case "daftar": {
-        setmodal("paket");
-        setcurrentTitle("Pendaftaran");
+        // setmodal("paket");
+        // setcurrentTitle("Pendaftaran");
+        setmodalPendaftaranDitutup(true);
+
         break;
       }
       case "login": {
@@ -94,6 +99,34 @@ function TryOut() {
 
   return (
     <TryOutLayout backto={"/"} handleBack={handleBack}>
+      {/* Modal Pendaftaran ditutup */}
+
+      {modalPendaftaranDitutup && (
+        <>
+          <div className="fixed top-0 bottom-0 left-0 right-0 z-50 flex w-screen min-h-screen bg-black bg-opacity-80 ">
+            {/* modal */}
+            <div
+              className="relative p-5 mx-5 my-auto sm:p-16 sm:mx-auto rounded-2xl w-96 bg-myYellow"
+              style={{ width: "610px" }}
+            >
+              <p className="font-bold text-center text-mygreen">
+                Pendaftaran Tryout ditutup
+              </p>
+
+              <div className="flex justify-center mt-7">
+                <button
+                  className="inline-block px-3 py-1 mx-auto text-lg font-bold text-white rounded-full bg-myDarkGreen"
+                  onClick={() => setmodalPendaftaranDitutup(false)}
+                >
+                  {/* <IoChevronBack className="inline mr-1" /> */}
+                  Kembali
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       {modal === "menu" && (
         <ToMenu ccurrentTitle={currentTitle} handleClick={handleClick} />
       )}
