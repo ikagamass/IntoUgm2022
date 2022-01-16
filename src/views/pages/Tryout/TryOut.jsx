@@ -22,9 +22,9 @@ function TryOut() {
     switch (nama) {
       // Menu
       case "daftar": {
-        // setmodal("paket");
-        // setcurrentTitle("Pendaftaran");
-        setmodalPendaftaranDitutup(true);
+        setmodal("paket");
+        setcurrentTitle("Pendaftaran");
+        // setmodalPendaftaranDitutup(true);
 
         break;
       }
@@ -50,6 +50,12 @@ function TryOut() {
       case "geng": {
         sethargaDibayar(75000);
         setmodal("kluster");
+        break;
+      }
+
+      case "festival": {
+        sethargaDibayar(10000);
+        setmodal("daftar");
         break;
       }
 
@@ -88,7 +94,8 @@ function TryOut() {
       }
       case "daftar": {
         // setcurrentTitle("Live Streaming");
-        setmodal("kluster");
+        setmodal("paket");
+        // setmodal("kluster"); yg lama make ini
         break;
       }
 

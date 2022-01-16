@@ -201,9 +201,10 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
   }, [isError]);
 
   const paketUjian = (harga) => {
-    if (harga == 20000) return "Ngambis - 20.000";
+    if (harga == 10000) return "Festival - 10.000";
+    else if (harga == 20000) return "Ngambis - 20.000";
     else if (harga == 35000) return "Couple Ambis - 35.000";
-    if (harga == 75000) return "Geng Ambis - 75.000";
+    else if (harga == 75000) return "Geng Ambis - 75.000";
   };
 
   const confirmModal = (
@@ -530,7 +531,7 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
           </div>
 
           {/* Mata Ujian */}
-          <div className="flex flex-col mt-2 sm:flex-row">
+          {/* <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Mata Ujian</label>
             <input
               name="paket"
@@ -539,7 +540,7 @@ function ToForm({ currentTitle, handleClick, hargaDibayar, mataUjian }) {
               disabled={true}
               placeholder={mataUjian}
             />
-          </div>
+          </div> */}
 
           <div className="flex flex-col mt-2 sm:flex-row">
             <label className="font-bold w-52 text-mygreen">Password Akun</label>

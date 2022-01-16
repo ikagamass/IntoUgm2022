@@ -32,7 +32,11 @@ function Profile() {
 
   const onClickPayment = () => {
     // console.log(userData);
-    if (userData.harga !== 30000 && userData.harga !== 20000) {
+    if (
+      userData.harga !== 30000 &&
+      userData.harga !== 20000 &&
+      userData.harga !== 10000
+    ) {
       setmodal("payment");
     } else {
       handlePayment();
@@ -97,7 +101,8 @@ function Profile() {
   };
 
   const paket = () => {
-    if (userData.harga === 20000) return "Ngambis - 20.000";
+    if (userData.harga === 10000) return "Festival - 10.000";
+    else if (userData.harga === 20000) return "Ngambis - 20.000";
     else if (userData.harga === 30000) return "Ngambis - 30.000";
     else if (userData.harga === 35000) return "Couple Ambis - 35.000";
     else if (userData.harga === 50000) return "Couple Ambis - 50.000";
@@ -155,11 +160,13 @@ function Profile() {
               {/* status, matkul, foto-mobile */}
               <div className="flex flex-col items-center col-span-4 sm:flex-row sm:justify-between">
                 {/* mata kuliah */}
-                <div className="flex justify-center sm:order-last">
-                  <h2 className="inline px-3 py-1 text-center text-white rounded-full acakadut bg-myDarkBlue">
-                    {userData.mataUjian}
-                  </h2>
-                </div>
+                {userData.harga != 10000 && (
+                  <div className="flex justify-center sm:order-last">
+                    <h2 className="inline px-3 py-1 text-center text-white rounded-full acakadut bg-myDarkBlue">
+                      {userData.mataUjian}
+                    </h2>
+                  </div>
+                )}
 
                 {/* Foto Mobile */}
                 <img
