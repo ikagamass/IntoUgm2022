@@ -31,9 +31,9 @@ function DesktopHome() {
       }
 
       case "Into": {
-        setmodal(true);
-
-        // history.push("/Into");
+        window.open(
+          "https://drive.google.com/file/d/1CxXywNNerK-Yz6JMRnsz4qiMZGRDJD_v/view"
+        );
         break;
       }
       case "Live": {
