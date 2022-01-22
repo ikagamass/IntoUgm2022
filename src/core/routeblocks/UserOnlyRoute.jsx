@@ -3,16 +3,31 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/index";
 
 const UserOnlyRoute = ({ children, redirect, currentPage }) => {
-  let { status } = useAuth();
+  let { status, userData } = useAuth();
   const history = useHistory();
 
   useEffect(() => {
-    console.log("User only route", status);
+    console.log("User only route", userData);
     if (status !== "user" && status !== "initial") {
       history.push("/login");
       status = "user";
     }
   }, [status]);
+
+  // Bayar Only Route
+  useEffect(() => {
+    if (
+      userData !== null &&
+      userData.status == false &&
+      currentPage === "Tour"
+    ) {
+      alert(
+        "Akun anda belum melakukan aktivasi, silahkan aktivasi terlebih dahulu"
+      );
+      history.push("/login");
+      status = "user";
+    }
+  }, [userData]);
 
   return <div>{status === "user" && children}</div>;
 };

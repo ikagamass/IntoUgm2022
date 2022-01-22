@@ -40,22 +40,22 @@ const TourDeFaculty = () => {
   };
 
   return (
-    <UserOnlyRoute>
+    <UserOnlyRoute currentPage="Tour">
       <TourLayout handleBack={handleBack}>
         <TitleText judul={"360° Virtual Expo"} />
-        <div className="w-full px-4 py-6 mx-auto mt-8 mb-24 text-center bg-white rounded-3xl bg-opacity-70  lg:mx-0 ">
+        <div className="w-full px-6 py-6 mx-auto mt-8 text-center bg-white rounded-3xl bg-opacity-70 lg:mx-0 ">
           <>
             <h2 className="mx-auto mb-2 text-sm sm:hidden font-acakadut-mobile">
               360° Virtual Expo
             </h2>
 
             {/* button */}
-            <div className="lg:grid lg:grid-cols-5 lg:gap-8 grid">
+            <div className="grid lg:grid lg:grid-cols-5 lg:gap-8">
               {/* Tulisan */}
-              <div className="col-span-2 lg:text-left text-xl font-bold text-center my-4 lg:my-0 text-myDarkBlue order-last lg:order-first">
+              <div className="order-last col-span-2 my-4 text-xl font-bold text-center lg:text-left lg:my-0 text-myDarkBlue lg:order-first">
                 <div className="flex flex-col justify-between h-full">
                   <div>
-                    <p className=" mb-3">
+                    <p className="mb-3 ">
                       360° Virtual Expo hadir mulai tanggal 20 Januari 2022 di
                       platform Mozilla Hubs!
                     </p>
@@ -65,14 +65,19 @@ const TourDeFaculty = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="px-3 py-1 mt-4 mb-2 text-base text-white bg-mygreen text-center rounded-full w-full">
+                    <p
+                      className="w-full px-3 py-1 mt-4 mb-2 text-base text-center text-white rounded-full cursor-pointer bg-mygreen"
+                      onClick={() =>
+                        window.open("https://linktr.ee/intougm2022")
+                      }
+                    >
                       360° Virtual Expo
                     </p>
-                    <p className="px-3 py-1 mt-2 mb-4 text-base  text-myDarkBlue bg-white text-center rounded-full w-full">
+                    <p className="w-full px-3 py-1 mt-2 mb-4 text-base text-center bg-white rounded-full text-myDarkBlue">
                       Panduan 360° Virtual Expo
                     </p>
                   </div>
-                  <p className="text-center  text-lg">
+                  <p className="text-lg text-center">
                     360° Virtual Expo hanya dapat diakses jika Anda telah
                     mendaftarkan akun InTO UGM 2022
                   </p>
@@ -81,11 +86,12 @@ const TourDeFaculty = () => {
 
               {/* Video */}
               <div className="col-span-3">
-                <div className="container h-full items-center">
+                <div className="container items-center h-full">
                   <iframe
                     className="responsive-iframe"
-                    src="https://www.youtube.com/embed/T3bxbVGWy5k"
-                    title="YouTube video player"
+                    // src="https://www.youtube.com/embed/T3bxbVGWy5k"
+                    src="https://www.youtube.com/embed/T3bxbVGWy5"
+                    title="Teaser Virtual Tour"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
