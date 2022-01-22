@@ -25,8 +25,7 @@ function DesktopHome() {
       }
 
       case "Tour": {
-        setmodal(true);
-        // history.push("/tour-de-faculty");
+        history.push("/tour");
         break;
       }
 
@@ -34,6 +33,7 @@ function DesktopHome() {
         window.open(
           "https://drive.google.com/file/d/1CxXywNNerK-Yz6JMRnsz4qiMZGRDJD_v/view"
         );
+
         break;
       }
       case "Live": {

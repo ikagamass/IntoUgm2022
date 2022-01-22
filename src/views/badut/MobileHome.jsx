@@ -26,8 +26,9 @@ function MobileHome() {
         break;
       }
       case "Tour": {
-        setmodal(true);
-        // history.push("/tour-de-faculty");
+        // window.open("https://linktr.ee/intougm2022");
+        history.push("/tour");
+
         break;
       }
 
@@ -108,10 +109,10 @@ const buttonData = [
     text: "Apa itu InTO UGM?",
     nama: "Into",
   },
-  {
-    bg: "url('/images/menus/menu5.jpg')",
-    bgHide: Menu5,
-    text: "Spnsor",
-    nama: "Sponsor",
-  },
+  // {
+  //   bg: "url('/images/menus/menu5.jpg')",
+  //   bgHide: Menu5,
+  //   text: "Spnsor",
+  //   nama: "Sponsor",
+  // },
 ];

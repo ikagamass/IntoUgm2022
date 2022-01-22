@@ -20,6 +20,7 @@ const AuthStore = () => {
 
       if (res.data.status === "OK") {
         setToken(res.data.body.token); //working
+        console.log("login", res);
         setStatus("user");
 
         setUserData(res.data.body.user_data);
@@ -36,6 +37,8 @@ const AuthStore = () => {
 
       if (res.data.status === "OK") {
         setUserData(res.data.body.user_data);
+        console.log("register", res);
+
         setToken(res.data.body.token);
         setStatus("user");
       } else {
