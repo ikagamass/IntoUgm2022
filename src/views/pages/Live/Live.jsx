@@ -84,9 +84,7 @@ const Live = () => {
               <iframe
                 width="560"
                 height="315"
-                src={
-                  "https://www.youtube.com/embed/onVjiCfi0wQ?list=RDid7O6MGqT2I"
-                }
+                src={"https://www.youtube.com/watch?v=tgLS9BFk5Q8"}
                 frameborder="0"
                 className="mx-auto"
                 allowfullscreen

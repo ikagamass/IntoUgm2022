@@ -3,7 +3,7 @@ import ContextProvider from "./core/contexts";
 
 import Home from "./views/pages/Home";
 import Live from "./views/pages/Live/Live";
-import TourDeFaculty from "./views/pages/TourDeFaculty";
+import TourDeFaculty from "./views/pages/Tour/TourDeFaculty";
 import TryOut from "./views/pages/Tryout/TryOut.jsx";
 
 import Login from "views/pages/Login";
@@ -28,7 +28,7 @@ function App() {
           <Route path="/profile" component={Profile} />
 
           <Route exact path="/live" component={Live} />
-          <Route exact path="/tour-de-faculty" component={page404} />
+          <Route exact path="/tour" component={TourDeFaculty} />
 
           <Route path="*" component={page404} />
         </Switch>
