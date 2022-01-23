@@ -99,17 +99,21 @@ const Live = () => {
 
               <div className="grid lg:grid lg:grid-cols-5 lg:gap-8">
                 {/* Tulisan */}
-                <div className="order-last col-span-2 my-4 text-xl font-bold text-center lg:text-left lg:my-0 text-myDarkBlue ">
-                  <div className="h-full px-10 py-10 rounded-3xl bg-myYellow text-mygreen">
-                    <p className="mb-10 text-4xl">Main Event InTO UGM 2O22</p>
-                    <p>
-                      Saksikan acara puncak InTO UGM 2022 yang akan diisi dengan
-                      opening, webinar, beragam penampilan, dan pengumuman juara
-                      Try Out InTO UGM 2O22!
-                      <br /> <br />
-                      Peserta dapat mengikuti Main Event InTO UGM 2022 melalui
-                      tautan Zoom di Grup WhatsApp peserta InTO UGM 2022.{" "}
+                <div className="order-last col-span-2 my-4 text-xl font-bold text-left lg:my-0 text-myDarkBlue ">
+                  <div className="h-full p-5 sm:p-10 rounded-3xl bg-myYellow text-mygreen">
+                    <p className="mb-5 sm:mb-10 sm:text-4xl">
+                      Main Event InTO UGM 2O22
                     </p>
+                    <div className="text-sm sm:text-lg ">
+                      <p>
+                        Saksikan acara puncak InTO UGM 2022 yang akan diisi
+                        dengan opening, webinar, beragam penampilan, dan
+                        pengumuman juara Try Out InTO UGM 2O22!
+                        <br /> <br />
+                        Peserta dapat mengikuti Main Event InTO UGM 2022 melalui
+                        tautan Zoom di Grup WhatsApp peserta InTO UGM 2022.{" "}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
