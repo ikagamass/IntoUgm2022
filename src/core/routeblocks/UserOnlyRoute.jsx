@@ -21,9 +21,6 @@ const UserOnlyRoute = ({ children, redirect, currentPage }) => {
       userData.status == false &&
       currentPage === "Tour"
     ) {
-      alert(
-        "Akun anda belum melakukan aktivasi, silahkan aktivasi terlebih dahulu"
-      );
       history.push("/login");
       status = "user";
     }

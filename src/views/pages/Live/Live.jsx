@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserOnlyRoute from "../../../core/routeblocks/UserOnlyRoute";
 import LiveLayout from "./LiveLayout";
 import segitiga from "../../../assets/images/segitiga.svg";
+import segitiga2 from "../../../assets/images/segitiga2.svg";
 
 import { Link } from "react-router-dom";
 import TitleText from "views/components/TitleText";
@@ -17,11 +18,10 @@ const Live = () => {
     if (tujuan === "Opening") {
       setmenu("video");
 
-      setcurrentTitle("Opening Main Event");
+      setcurrentTitle("Main Event");
     } else if (tujuan === "Talkshow") {
       setcurrentTitle("Talkshow");
     } else if (tujuan === "Closing") {
-      setcurrentTitle("Closing Main Event");
     }
   };
 
@@ -79,7 +79,7 @@ const Live = () => {
                       </p>
                     </div>
                     <img
-                      src={segitiga}
+                      src={item.tujuan === "Opening" ? segitiga : segitiga2}
                       alt=""
                       height={50}
                       className="my-auto ml-2"

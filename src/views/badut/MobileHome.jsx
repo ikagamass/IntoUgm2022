@@ -39,8 +39,8 @@ function MobileHome() {
         break;
       }
       case "Live": {
-        // history.push("/live");
-        setmodal(true);
+        history.push("/live");
+        // setmodal(true);
         break;
       }
 
