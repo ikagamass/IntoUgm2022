@@ -9,6 +9,22 @@ import { IoChevronBack } from "react-icons/io5";
 import "../../assets/styles/_tryout.css";
 import { Link } from "react-router-dom";
 
+import sponsor1 from "assets/images/sponsor/1.png";
+import sponsor2 from "assets/images/sponsor/2.jpg";
+import sponsor3 from "assets/images/sponsor/3.jpg";
+import sponsor4 from "assets/images/sponsor/4.jpg";
+import sponsor5 from "assets/images/sponsor/5.jpg";
+import sponsor6 from "assets/images/sponsor/6.png";
+import sponsor7 from "assets/images/sponsor/7.png";
+import sponsor8 from "assets/images/sponsor/8.png";
+import sponsor9 from "assets/images/sponsor/9.png";
+
+import support1 from "assets/images/sponsor/s1.jpg";
+import support2 from "assets/images/sponsor/s2.jpg";
+
+import medpart1 from "assets/images/sponsor/m1.jpg";
+import medpart2 from "assets/images/sponsor/m2.jpg";
+
 function AccountLayout({ children }) {
   const history = useHistory();
 
@@ -38,10 +54,15 @@ function AccountLayout({ children }) {
             className="inline-block px-3 py-2 text-lg font-bold text-white rounded-full n bg-myDarkGreen"
             to={"/"}
           >
-            <IoChevronBack className="inline mr-1" />
+            <IoChevronBack className="z-10 inline mr-1 " />
             Kembali
           </Link>
         </div>
+
+        <div
+          style={{ backgroundImage: "url('/images/sponsor.jpg')" }}
+          className="absolute bottom-0 left-0 right-0 hidden h-24 bg-white bg-center bg-no-repeat lg:block"
+        />
 
         {/* footer */}
         <div
