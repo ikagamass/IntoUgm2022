@@ -61,7 +61,7 @@ function AccountLayout({ children }) {
 
         <div
           style={{ backgroundImage: "url('/images/sponsor.jpg')" }}
-          className="absolute bottom-0 left-0 right-0 h-24 bg-white bg-center bg-no-repeat"
+          className="absolute bottom-0 left-0 right-0 hidden h-24 bg-white bg-center bg-no-repeat lg:block"
         />
 
         {/* footer */}
