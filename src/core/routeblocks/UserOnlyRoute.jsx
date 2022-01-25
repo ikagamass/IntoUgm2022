@@ -7,7 +7,6 @@ const UserOnlyRoute = ({ children, redirect, currentPage }) => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log("User only route", userData);
     if (status !== "user" && status !== "initial") {
       history.push("/login");
       status = "user";
