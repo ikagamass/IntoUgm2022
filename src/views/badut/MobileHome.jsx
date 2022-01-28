@@ -10,6 +10,9 @@ import { useHistory } from "react-router-dom";
 import { IoChevronForward } from "react-icons/io5";
 import PageNotReady from "views/components/modal/PageNotReady";
 
+import sp1 from "../../assets/images/sp1.jpg";
+import sp2 from "../../assets/images/sp2.jpg";
+
 function MobileHome() {
   const history = useHistory();
 
