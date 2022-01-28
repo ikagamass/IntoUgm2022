@@ -2,6 +2,10 @@ import React from "react";
 import logo from "../../assets/images/logo.png";
 import logo2 from "../../assets/images/logo2.png";
 import ikagamas from "../../assets/images/ikagamass.png";
+
+import sp1 from "../../assets/images/sp1.jpg";
+import sp2 from "../../assets/images/sp2.jpg";
+
 import { useHistory } from "react-router-dom";
 
 import { IoChevronBack } from "react-icons/io5";
@@ -66,12 +70,12 @@ function AccountLayout({ children }) {
 
         {/* footer */}
         <div
-          className="sm:hidden"
+          className=""
           style={{
             backgroundColor: "#11645B",
           }}
         >
-          <div className="flex justify-center py-4 gap-x-1">
+          <div className="flex justify-center py-4 gap-x-1 sm:hidden">
             <div className="w-16 h-12 ">
               <img src={logo2} alt="" className="object-contain " />
             </div>
@@ -81,8 +85,19 @@ function AccountLayout({ children }) {
             </div>
           </div>
 
+          {/* Sponsor */}
+          <div className="flex flex-wrap justify-center h-auto gap-1 py-4 bg-white lg:hidden ">
+            <div className="">
+              <img src={sp1} alt="" className="object-contain " />
+            </div>
+
+            <div className="">
+              <img src={sp2} alt="" className="object-contain " />
+            </div>
+          </div>
+
           <div
-            className="py-4 text-xs text-center text-white"
+            className="py-4 text-xs text-center text-white sm:hidden"
             style={{ background: "#00295D" }}
           >
             <p>presented by</p>

@@ -5,6 +5,9 @@ import ikagamas from "../../assets/images/ikagamass.png";
 
 import { IoChevronForward } from "react-icons/io5";
 
+import sp1 from "../../assets/images/sp1.jpg";
+import sp2 from "../../assets/images/sp2.jpg";
+
 import "../../assets/styles/_tryout.css";
 import { Link } from "react-router-dom";
 
@@ -30,12 +33,12 @@ function HomeLayout({ children }) {
       <div id="back and footer">
         {/* footer */}
         <div
-          className="sm:hidden"
+          className=""
           style={{
             backgroundColor: "#11645B",
           }}
         >
-          <div className="flex justify-center py-4 gap-x-1">
+          <div className="flex justify-center py-4 gap-x-1 sm:hidden">
             <div className="w-16 h-12 ">
               <img src={logo2} alt="" className="object-contain " />
             </div>
@@ -45,8 +48,20 @@ function HomeLayout({ children }) {
             </div>
           </div>
 
+          <div className="sm:mt-4 ">
+            <div className="flex flex-wrap justify-center h-auto gap-1 py-4 bg-white lg:hidden ">
+              <div className="">
+                <img src={sp1} alt="" className="object-contain " />
+              </div>
+
+              <div className="">
+                <img src={sp2} alt="" className="object-contain " />
+              </div>
+            </div>
+          </div>
+
           <div
-            className="py-4 text-xs text-center text-white"
+            className="py-4 text-xs text-center text-white sm:hidden"
             style={{ background: "#00295D" }}
           >
             <p>presented by</p>
