@@ -3,7 +3,7 @@ const send = (data) =>
   new Promise((resolve) => setTimeout(() => resolve({ data: data }), 2000));
 
 const intoaxios = axios.create({
-  baseURL: "https://into-ugm-api.herokuapp.com",
+  baseURL: "https://into-2022-api.herokuapp.com",
 });
 
 export default intoaxios;
